@@ -147,19 +147,20 @@
   border-radius: 999px;
 }
 .adv-tree {
-  width: 0.7rem;
-  height: 0.7rem;
-  background: #1f7a43;
+  width: 0.85rem;
+  height: 0.85rem;
+  background: #0f5130;
+  box-shadow: 0 2px 0 rgb(0 0 0 / 0.25);
 }
 .adv-water {
   inset: 55% -10% -20% 30%;
-  background: #4f8df7;
+  background: var(--color-btn-blue);
 }
 .adv-rock {
   width: 1rem;
-  height: 0.7rem;
+  height: 0.75rem;
   border-radius: 0.3rem !important;
-  background: #9b8f7a;
+  background: #5b4c38;
 }
 .adv-cave {
   left: 35%;
@@ -182,20 +183,20 @@
   inset: 0;
   border-radius: inherit;
   background: #16261b;
-  opacity: 0.85;
+  opacity: 0.72;
   animation: reveal 4.6s linear infinite;
   animation-delay: var(--delay, 0s);
 }
 @keyframes reveal {
   0% {
-    opacity: 0.85;
+    opacity: 0.72;
   }
   6%,
   94% {
     opacity: 0;
   }
   100% {
-    opacity: 0.85;
+    opacity: 0.72;
   }
 }
 .adv-grid > .adv-fogged::after {
@@ -522,4 +523,12 @@
 .game-card:hover {
   translate: 0 -6px;
   box-shadow: 0 24px 40px -24px rgb(0 0 0 / 0.3);
+}
+
+/* Without motion, the explored rooms stay revealed so the overworld reads at rest. */
+@media (prefers-reduced-motion: reduce) {
+  .adv-grid > span:not(.adv-fogged)::after {
+    animation: none;
+    opacity: 0;
+  }
 }

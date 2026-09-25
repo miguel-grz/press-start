@@ -39,7 +39,10 @@ export const en = {
       reviewRows: { released: 'Released', price: 'Launch price (Japan)', units: 'Units sold' },
       media: { title: 'Physical media, in motion', body: 'Watch the cartridge slide in and the disc spin up.' },
       games: { title: 'Five iconic games', body: 'Each one reimagined as a tiny, original animation.' },
-      specs: { title: 'Specs you can feel', body: 'Processor, memory and resolution, animated side by side.' },
+      specs: {
+        title: 'Specs you can see',
+        body: 'Processor, colours, sprites and resolution, drawn as what they mean.',
+      },
       hardware: { title: 'Hardware up close', body: 'Hotspots on the ports, switches and slots that mattered.' },
     },
     timeline: {

@@ -19,7 +19,7 @@ export function VerdictSection({ data }: { data: ConsoleProfileModule }) {
         </div>
         <ul className="flex flex-col gap-3 self-end">
           {copy.verdict.points.map((point, i) => (
-            <li key={point} className="rounded-2xl bg-white/12 p-5 text-lg leading-snug">
+            <li key={point} className="rounded-2xl bg-black/20 p-5 text-lg leading-snug">
               {point}
               <Cite ids={data.profile.citations[BLOCKS[i] ?? 'verdict0']} />
             </li>

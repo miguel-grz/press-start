@@ -59,12 +59,6 @@
   }
 }
 
-@keyframes fill {
-  from {
-    scale: 0 1;
-  }
-}
-
 .demo-cart {
   animation: cart-insert 3.6s var(--ease-in-out-quart) infinite;
 }
@@ -79,16 +73,4 @@
 
 .demo-coin {
   animation: coin 2.2s ease-out infinite;
-}
-
-.demo-bar {
-  transform-origin: left;
-}
-
-@supports (animation-timeline: view()) {
-  .demo-bar {
-    animation: fill linear both;
-    animation-timeline: view();
-    animation-range: entry 20% cover 45%;
-  }
 }

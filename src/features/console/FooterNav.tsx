@@ -20,7 +20,7 @@ function Neighbor({ entry, label, next }: { entry: ConsoleEntry; label: string; 
         to={`/console/${entry.slug}`}
         viewTransition
         aria-label={`${label}: ${entry.name}, ${entry.releaseYear}`}
-        className={`group bg-tint-bold flex items-center gap-5 rounded-tile p-6 text-ink no-underline transition-transform duration-500 ease-out-expo hover:-translate-y-1 sm:p-8 ${next ? 'flex-row-reverse text-right' : ''}`}
+        className={`group bg-tint-bold flex h-full items-center gap-5 rounded-tile p-6 text-ink no-underline transition-transform duration-500 ease-out-expo hover:-translate-y-1 sm:p-8 ${next ? 'flex-row-reverse text-right' : ''}`}
       >
         <span
           className={`transition-transform duration-300 ${next ? 'group-hover:translate-x-1' : 'group-hover:-translate-x-1'}`}

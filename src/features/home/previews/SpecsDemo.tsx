@@ -1,21 +1,23 @@
-const BARS = [
-  { label: 'CPU', width: '72%', color: 'bg-btn-blue' },
-  { label: 'RAM', width: '48%', color: 'bg-btn-green' },
-  { label: 'RES', width: '86%', color: 'bg-btn-red' },
-] as const
-
-/** Illustrative comparison bars (no real figures): the console pages carry the sourced numbers. */
+/** Miniature of the console pages' spec drawings: a clock figure, a colour matrix and a sprite grid. */
 export function SpecsDemo() {
   return (
-    <div aria-hidden="true" className="flex h-40 flex-col justify-center gap-4">
-      {BARS.map((bar) => (
-        <div key={bar.label} className="flex items-center gap-3">
-          <span className="w-9 font-mono text-xs text-muted">{bar.label}</span>
-          <span className="h-2.5 flex-1 overflow-hidden rounded-full bg-black/[0.06]">
-            <span className={`demo-bar block h-full rounded-full ${bar.color}`} style={{ width: bar.width }} />
-          </span>
-        </div>
-      ))}
+    <div aria-hidden="true" className="flex h-40 items-center justify-center gap-5">
+      <div className="grid size-24 place-items-center rounded-2xl bg-btn-blue font-mono text-white">
+        <span className="text-center text-xl leading-tight font-medium">
+          1.79
+          <span className="block text-xs">MHz</span>
+        </span>
+      </div>
+      <div className="grid grid-cols-6 gap-1">
+        {Array.from({ length: 24 }, (_, i) => (
+          <span key={i} className={`size-2.5 rounded-full ${i < 14 ? 'bg-ink' : 'bg-black/12'}`} />
+        ))}
+      </div>
+      <div className="grid grid-cols-6 gap-1">
+        {Array.from({ length: 24 }, (_, i) => (
+          <span key={i} className={`size-2.5 rounded-[2px] ${i < 6 ? 'bg-btn-red' : 'bg-black/12'}`} />
+        ))}
+      </div>
     </div>
   )
 }

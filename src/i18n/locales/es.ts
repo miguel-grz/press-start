@@ -41,7 +41,10 @@ export const es: Dictionary = {
       reviewRows: { released: 'Lanzamiento', price: 'Precio de salida (Japón)', units: 'Unidades vendidas' },
       media: { title: 'Formatos físicos, en movimiento', body: 'Mira cómo entra el cartucho y cómo gira el disco.' },
       games: { title: 'Cinco juegos icónicos', body: 'Cada uno reinterpretado en una pequeña animación original.' },
-      specs: { title: 'Specs que se sienten', body: 'Procesador, memoria y resolución, animados lado a lado.' },
+      specs: {
+        title: 'Specs que se ven',
+        body: 'Procesador, colores, sprites y resolución, dibujados como lo que significan.',
+      },
       hardware: {
         title: 'El hardware de cerca',
         body: 'Puntos interactivos en los puertos, interruptores y ranuras clave.',

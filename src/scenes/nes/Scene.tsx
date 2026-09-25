@@ -96,7 +96,8 @@ export default function NesScene({ colorway, progress }: SceneProps) {
   const famicom = useRef<Group>(null)
   const nesLabel = useLabel(['GAME PAK', 'NES · 72 pins'], colorway.accent)
   const famicomLabel = useLabel(['CASSETTE', 'Famicom · 60 pins'], '#1f4fd6', 512, 300)
-  const fit = useThree((state) => Math.min(1.25, state.viewport.width / 3.4, state.viewport.height / 3.2))
+  // Scale so both cartridges side by side (≈3 units wide, ≈1.6 tall) fill the stage with a margin.
+  const fit = useThree((state) => Math.min(1.15, state.viewport.width / 3.3, state.viewport.height / 2))
 
   useFrame(({ clock }, delta) => {
     const p = reduced ? 1 : progress.current
@@ -110,12 +111,12 @@ export default function NesScene({ colorway, progress }: SceneProps) {
       g.rotation.y += (-0.35 + p * 0.35 + idle - g.rotation.y) * k
       // Tip the cartridge towards the camera to show the edge connector.
       g.rotation.x += (tilt * -1.2 - g.rotation.x) * k
-      g.position.x += (-compare * 0.8 - g.position.x) * k
+      g.position.x += (-compare * 0.72 - g.position.x) * k
       g.position.y += (tilt * 0.35 - g.position.y) * k
     }
     if (famicom.current) {
       const g = famicom.current
-      g.position.x += (2.8 - compare * 1.85 - g.position.x) * k
+      g.position.x += (2.8 - compare * 1.95 - g.position.x) * k
       g.rotation.y += (-0.2 + compare * 0.2 - idle - g.rotation.y) * k
     }
   })
@@ -130,7 +131,7 @@ export default function NesScene({ colorway, progress }: SceneProps) {
       <ambientLight intensity={0.4} />
       <directionalLight position={[2, 4, 5]} intensity={1.1} />
 
-      <group scale={fit}>
+      <group scale={fit} position={[0, 0.55, 0]}>
         <group ref={nes}>
           <Cartridge size={[1.2, 1.33, 0.2]} body="#8f9095" pinsPerSide={36} label={nesLabel} />
         </group>

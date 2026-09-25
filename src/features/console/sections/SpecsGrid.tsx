@@ -91,7 +91,7 @@ export function SpecsGrid({ specs }: { specs: ConsoleProfile['specs'] }) {
       <Tile
         label={`${t.console.specs.ram} · ${t.console.specs.vram}`}
         sources={[...new Set([...ram.sources, ...vram.sources])]}
-        className="bg-surface lg:col-span-3"
+        className="bg-soft-red lg:col-span-3"
       >
         <Count value={ram.value.kb} />
         <span className={unit}>KB</span>
@@ -102,12 +102,18 @@ export function SpecsGrid({ specs }: { specs: ConsoleProfile['specs'] }) {
       <Tile
         label={t.console.specs.resolution}
         sources={resolution.sources}
-        className="bg-surface lg:col-span-2"
+        className="bg-soft-blue lg:col-span-2"
         visual={
           <div
-            className="w-full rounded-md border border-black/10 bg-[linear-gradient(to_right,rgb(0_0_0/0.07)_1px,transparent_1px),linear-gradient(to_bottom,rgb(0_0_0/0.07)_1px,transparent_1px)] bg-[size:calc(100%/32)_calc(100%/30)]"
+            className="relative w-full overflow-hidden rounded-md bg-[linear-gradient(to_bottom,#bcd4ff_0_62%,#2fb56a_62%_72%,#8a5a32_72%)]"
             style={{ aspectRatio: `${width} / ${height}` }}
-          />
+          >
+            {/* An original pixel landscape on the console's own grid: 1 cell = 8 × 8 pixels. */}
+            <span className="absolute top-[14%] right-[16%] size-[12.5%] bg-btn-yellow" />
+            <span className="absolute top-[44%] left-[12%] h-[18%] w-[9.4%] bg-[#1f7a43]" />
+            <span className="absolute top-[38%] left-[46%] h-[24%] w-[6.25%] bg-btn-red" />
+            <span className="absolute inset-0 bg-[linear-gradient(to_right,rgb(0_0_0/0.12)_1px,transparent_1px),linear-gradient(to_bottom,rgb(0_0_0/0.12)_1px,transparent_1px)] bg-[size:calc(100%/32)_calc(100%/30)]" />
+          </div>
         }
       >
         <Count value={width} />

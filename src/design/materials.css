@@ -1,0 +1,29 @@
+/* Shared aisle materials used by every route: shelf lips, shelf tags, ticket stock, stickers. */
+
+/* Brushed metal shelf lip the tag clips onto. */
+.bay-lip {
+  background: linear-gradient(to bottom, #eef1f5, var(--color-lip) 40%, var(--color-lip-shade));
+  box-shadow: 0 6px 10px -4px rgb(0 0 0 / 0.45);
+}
+
+.shelf-tag {
+  background: var(--color-ticket);
+  color: var(--color-ink);
+  box-shadow: 0 1px 0 rgb(0 0 0 / 0.25);
+}
+
+/* Pull-ticket stock with a perforated top edge. */
+.ticket {
+  --hole: 3px;
+  background: var(--color-ticket);
+  color: var(--color-ink);
+  -webkit-mask: radial-gradient(circle var(--hole) at 50% 0, transparent 98%, #000) 0 0 / 9px 100% repeat-x;
+  mask: radial-gradient(circle var(--hole) at 50% 0, transparent 98%, #000) 0 0 / 9px 100% repeat-x;
+}
+
+.sticker {
+  background: var(--color-dayglo-yellow);
+  color: var(--color-ink);
+  border-radius: 999px;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.35);
+}

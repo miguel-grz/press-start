@@ -1,0 +1,132 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/archivo/wdth.css';
+
+/*
+ * PRESS START design tokens: the video game aisle.
+ * Fixture blue owns the surface; ticket stock carries reading; day-glo stickers mark state only.
+ * Console colorways arrive per bay/page as --cw-body / --cw-trim / --cw-accent.
+ */
+@theme {
+  --color-fixture: #1d3fbf;
+  --color-fixture-deep: #13298a;
+  --color-fixture-groove: #10236f;
+  --color-fixture-ink: #dfe6ff;
+  --color-lip: #d3d8e1;
+  --color-lip-shade: #8d96a8;
+  --color-ticket: #f5f6f1;
+  --color-ticket-rule: #c9ccc2;
+  --color-ink: #111216;
+  --color-ink-soft: #464a55;
+  --color-case: #0a0f2c;
+  --color-case-glow: #2a3b8f;
+  --color-dayglo-orange: #ff6a1a;
+  --color-dayglo-yellow: #ffe14d;
+
+  --font-sans: 'Archivo Variable', ui-sans-serif, system-ui, sans-serif;
+
+  /* One shelf pitch governs vertical rhythm: rows, rules and gaps are multiples of it. */
+  --spacing-pitch: 0.5rem;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+@layer base {
+  html {
+    background: var(--color-fixture);
+    color: var(--color-fixture-ink);
+    font-family: var(--font-sans);
+    font-variant-numeric: tabular-nums;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    scrollbar-color: var(--color-dayglo-yellow) var(--color-fixture-deep);
+    accent-color: var(--color-dayglo-orange);
+    caret-color: var(--color-dayglo-orange);
+  }
+
+  ::selection {
+    background: var(--color-dayglo-yellow);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-dayglo-yellow);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  a {
+    text-underline-offset: 0.2em;
+    text-decoration-thickness: 0.08em;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@utility font-sign {
+  font-family: var(--font-sans);
+  font-stretch: 62%;
+  font-weight: 850;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  line-height: 0.88;
+}
+
+@utility font-label {
+  font-family: var(--font-sans);
+  font-stretch: 75%;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* Slatwall: horizontal grooves on fixture blue, one groove per four shelf pitches. */
+@utility slatwall {
+  background-color: var(--color-fixture);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0 calc(var(--spacing-pitch) * 4 - 3px),
+    var(--color-fixture-groove) calc(var(--spacing-pitch) * 4 - 3px) calc(var(--spacing-pitch) * 4 - 1px),
+    rgb(255 255 255 / 0.12) calc(var(--spacing-pitch) * 4 - 1px) calc(var(--spacing-pitch) * 4)
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  /* Shared-element travel becomes the default root cross-fade. */
+  .vt-console {
+    view-transition-name: none !important;
+  }
+}
+
+/* Card → hero shared element; the name is set per console via --vt-name. */
+.vt-console {
+  view-transition-name: var(--vt-name);
+}
+
+::view-transition-group(*) {
+  animation-duration: 0.6s;
+  animation-timing-function: var(--ease-out-expo);
+}
+
+/* Stand-in hands the hero over to the 3D scene after the shared-element transition lands. */
+@keyframes standin-out {
+  to {
+    opacity: 0;
+  }
+}

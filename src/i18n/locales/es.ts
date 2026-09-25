@@ -43,7 +43,7 @@ export const es: Dictionary = {
       games: { title: 'Cinco juegos icónicos', body: 'Cada uno reinterpretado en una pequeña animación original.' },
       specs: {
         title: 'Specs que se ven',
-        body: 'Procesador, colores, sprites y resolución, dibujados como lo que significan.',
+        body: 'Procesador, colores y sprites, dibujados como lo que significan.',
       },
       hardware: {
         title: 'El hardware de cerca',

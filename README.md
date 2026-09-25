@@ -37,7 +37,7 @@ pnpm dev
 ## Roadmap
 
 1. ✅ Scaffold, design system, routing, data model, home preview, CI deploy
-2. NES vertical slice: sourced facts, generated assets, full scroll experience
+2. ✅ NES vertical slice: sourced facts, review-style page, 3D Game Pak showcase, design system documented in [DESIGN.md](DESIGN.md)
 3. The remaining seven consoles
 4. Home polish: timeline interactions, intro, sound, full i18n
 5. Performance, accessibility and polish pass, final README

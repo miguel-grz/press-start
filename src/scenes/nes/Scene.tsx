@@ -1,6 +1,6 @@
 import { ContactShadows, Environment, Lightformer, RoundedBox } from '@react-three/drei'
 import { useFrame, useThree } from '@react-three/fiber'
-import { useMemo, useRef } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
 import { CanvasTexture, SRGBColorSpace, type Group } from 'three'
 import { useReducedMotion } from '../../motion/useReducedMotion'
 import type { SceneProps } from '../types'
@@ -24,10 +24,10 @@ function useLabel(lines: readonly [string, string], band: string, width = 512, h
       ctx.fillStyle = band
       ctx.fillRect(0, 0, width, height * 0.3)
       ctx.fillStyle = '#ffffff'
-      ctx.font = `700 ${Math.round(height * 0.13)}px system-ui, sans-serif`
+      ctx.font = `700 ${Math.round(height * 0.13)}px 'Geist Variable', system-ui, sans-serif`
       ctx.fillText(lines[0], width * 0.07, height * 0.21)
       ctx.fillStyle = '#1d1d1f'
-      ctx.font = `600 ${Math.round(height * 0.1)}px system-ui, sans-serif`
+      ctx.font = `600 ${Math.round(height * 0.1)}px 'Geist Variable', system-ui, sans-serif`
       ctx.fillText(lines[1], width * 0.07, height * 0.55)
       ctx.fillStyle = '#86868b'
       for (let i = 0; i < 3; i++)
@@ -97,7 +97,13 @@ export default function NesScene({ colorway, progress }: SceneProps) {
   const nesLabel = useLabel(['GAME PAK', 'NES · 72 pins'], colorway.accent)
   const famicomLabel = useLabel(['CASSETTE', 'Famicom · 60 pins'], '#1f4fd6', 512, 300)
   // Scale so both cartridges side by side (≈3 units wide, ≈1.6 tall) fill the stage with a margin.
-  const fit = useThree((state) => Math.min(1.15, state.viewport.width / 3.3, state.viewport.height / 2))
+  const fit = useThree((state) => Math.min(1.1, state.viewport.width / 3.8, state.viewport.height / 2))
+  const camera = useThree((state) => state.camera)
+
+  // Aim at the pair's centre so they sit mid-stage at every aspect ratio.
+  useEffect(() => {
+    camera.lookAt(0, 0, 0)
+  }, [camera])
 
   useFrame(({ clock }, delta) => {
     const p = reduced ? 1 : progress.current
@@ -131,7 +137,7 @@ export default function NesScene({ colorway, progress }: SceneProps) {
       <ambientLight intensity={0.4} />
       <directionalLight position={[2, 4, 5]} intensity={1.1} />
 
-      <group scale={fit} position={[0, 0.55, 0]}>
+      <group scale={fit}>
         <group ref={nes}>
           <Cartridge size={[1.2, 1.33, 0.2]} body="#8f9095" pinsPerSide={36} label={nesLabel} />
         </group>

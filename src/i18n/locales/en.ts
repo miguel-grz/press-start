@@ -41,7 +41,7 @@ export const en = {
       games: { title: 'Five iconic games', body: 'Each one reimagined as a tiny, original animation.' },
       specs: {
         title: 'Specs you can see',
-        body: 'Processor, colours, sprites and resolution, drawn as what they mean.',
+        body: 'Processor, colours and sprites, drawn as what they mean.',
       },
       hardware: { title: 'Hardware up close', body: 'Hotspots on the ports, switches and slots that mattered.' },
     },

@@ -1,0 +1,574 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-25T23:05:30.129540+00:00",
+  "title": "Design System: PRESS START",
+  "extensions": {
+    "colorMeta": {
+      "canvas": {
+        "role": "neutral",
+        "displayName": "Showroom Canvas",
+        "canonical": "#f5f5f7",
+        "oklch": "oklch(97.1% 0.003 286)",
+        "tonalRamp": [
+          "#0b0b0c",
+          "#242425",
+          "#3f3f41",
+          "#5d5d5f",
+          "#7d7d7f",
+          "#9e9ea0",
+          "#c4c4c6",
+          "#eeeef0"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Studio White",
+        "canonical": "#ffffff",
+        "oklch": "oklch(100.0% 0.000 90)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#7d7d7d",
+          "#9e9e9e",
+          "#c4c4c4",
+          "#eeeeee"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Graphite Ink",
+        "canonical": "#1d1d1f",
+        "oklch": "oklch(23.2% 0.004 286)",
+        "tonalRamp": [
+          "#0b0b0d",
+          "#242426",
+          "#3f3f42",
+          "#5d5d60",
+          "#7d7d7f",
+          "#9e9ea1",
+          "#c4c4c6",
+          "#eeeef1"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Soft Graphite",
+        "canonical": "#424245",
+        "oklch": "oklch(38.0% 0.005 286)",
+        "tonalRamp": [
+          "#0b0b0d",
+          "#242426",
+          "#3f3f42",
+          "#5d5d60",
+          "#7d7d80",
+          "#9e9ea1",
+          "#c4c4c7",
+          "#eeeef2"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Quiet Grey",
+        "canonical": "#5f5f65",
+        "oklch": "oklch(48.8% 0.009 286)",
+        "tonalRamp": [
+          "#0b0b0f",
+          "#232329",
+          "#3f3f45",
+          "#5d5d63",
+          "#7c7c83",
+          "#9e9ea4",
+          "#c3c3ca",
+          "#eeeef5"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "#d2d2d7",
+        "oklch": "oklch(86.5% 0.007 286)",
+        "tonalRamp": [
+          "#0b0b0e",
+          "#242427",
+          "#3f3f43",
+          "#5d5d61",
+          "#7d7d81",
+          "#9e9ea3",
+          "#c3c3c8",
+          "#eeeef3"
+        ]
+      },
+      "link": {
+        "role": "neutral",
+        "displayName": "Source Blue",
+        "canonical": "#0a5bd3",
+        "oklch": "oklch(50.5% 0.198 260)",
+        "tonalRamp": [
+          "#00003f",
+          "#00166a",
+          "#003598",
+          "#0354c8",
+          "#3578e7",
+          "#619dff",
+          "#90c5ff",
+          "#c3f0ff"
+        ]
+      },
+      "btn-red": {
+        "role": "primary",
+        "displayName": "Face-Button Red",
+        "canonical": "#d9262c",
+        "oklch": "oklch(57.2% 0.212 26)",
+        "tonalRamp": [
+          "#2e0000",
+          "#570000",
+          "#830000",
+          "#b10618",
+          "#de3234",
+          "#fc675f",
+          "#ff988d",
+          "#ffcbc0"
+        ]
+      },
+      "btn-blue": {
+        "role": "primary",
+        "displayName": "Face-Button Blue",
+        "canonical": "#2f6bff",
+        "oklch": "oklch(58.1% 0.229 264)",
+        "tonalRamp": [
+          "#010041",
+          "#00106d",
+          "#08309d",
+          "#1c4ecf",
+          "#336fff",
+          "#5b96ff",
+          "#89c0ff",
+          "#bdedff"
+        ]
+      },
+      "btn-yellow": {
+        "role": "secondary",
+        "displayName": "Face-Button Yellow",
+        "canonical": "#f6bf26",
+        "oklch": "oklch(83.2% 0.162 86)",
+        "tonalRamp": [
+          "#140800",
+          "#332000",
+          "#543b00",
+          "#785800",
+          "#9d7700",
+          "#c5970d",
+          "#f2bb24",
+          "#ffe874"
+        ]
+      },
+      "btn-green": {
+        "role": "secondary",
+        "displayName": "Face-Button Green",
+        "canonical": "#2fb56a",
+        "oklch": "oklch(68.5% 0.158 154)",
+        "tonalRamp": [
+          "#001300",
+          "#002f0c",
+          "#004f22",
+          "#00713a",
+          "#189553",
+          "#39ba6f",
+          "#77de9a",
+          "#b0ffca"
+        ]
+      },
+      "soft-red": {
+        "role": "secondary",
+        "displayName": "Soft Red",
+        "canonical": "color-mix(in oklab, #d9262c 12%, white)",
+        "tonalRamp": [
+          "#2e0000",
+          "#570000",
+          "#830000",
+          "#b10618",
+          "#de3234",
+          "#fc675f",
+          "#ff988d",
+          "#ffcbc0"
+        ],
+        "purpose": "Feature-tile fill; ink text."
+      },
+      "soft-yellow": {
+        "role": "secondary",
+        "displayName": "Soft Yellow",
+        "canonical": "color-mix(in oklab, #f6bf26 22%, white)",
+        "tonalRamp": [
+          "#140800",
+          "#332000",
+          "#543b00",
+          "#785800",
+          "#9d7700",
+          "#c5970d",
+          "#f2bb24",
+          "#ffe874"
+        ],
+        "purpose": "Feature-tile fill; ink text."
+      },
+      "soft-green": {
+        "role": "secondary",
+        "displayName": "Soft Green",
+        "canonical": "color-mix(in oklab, #2fb56a 15%, white)",
+        "tonalRamp": [
+          "#001300",
+          "#002f0c",
+          "#004f22",
+          "#00713a",
+          "#189553",
+          "#39ba6f",
+          "#77de9a",
+          "#b0ffca"
+        ],
+        "purpose": "Feature-tile fill; ink text."
+      },
+      "soft-blue": {
+        "role": "secondary",
+        "displayName": "Soft Blue",
+        "canonical": "color-mix(in oklab, #2f6bff 12%, white)",
+        "tonalRamp": [
+          "#010041",
+          "#00106d",
+          "#08309d",
+          "#1c4ecf",
+          "#336fff",
+          "#5b96ff",
+          "#89c0ff",
+          "#bdedff"
+        ],
+        "purpose": "Feature-tile fill; ink text."
+      }
+    },
+    "colorway": {
+      "mechanism": "Each console exposes --cw-body, --cw-trim, --cw-accent (lib/colorway.ts) on its page root and on every card that stands for it. Surfaces mix the nearest --cw-accent into white in OKLab.",
+      "utilities": [
+        {
+          "name": "bg-tint",
+          "value": "color-mix(in oklab, var(--cw-accent) 11%, white)",
+          "purpose": "Quiet console-owned panels (hotspot detail)."
+        },
+        {
+          "name": "bg-tint-bold",
+          "value": "color-mix(in oklab, var(--cw-accent) 42%, white)",
+          "purpose": "Console heroes, lineup cards, previous/next cards. Ink text."
+        },
+        {
+          "name": "raw accent",
+          "value": "var(--cw-accent)",
+          "purpose": "Data marks only: sales bars, rails, milestone dots, lit sprite cells, timeline dots."
+        }
+      ],
+      "accents": {
+        "atari-2600": "#d9662b",
+        "nes": "#c8102e",
+        "sega-genesis": "#46607d",
+        "snes": "#6b56c7",
+        "playstation": "#e0a526",
+        "nintendo-64": "#1f9a48",
+        "playstation-2": "#1f4fd6",
+        "nintendo-switch": "#ff4554"
+      }
+    },
+    "contrastPairs": [
+      {
+        "fill": "btn-red",
+        "text": "white",
+        "ratio": 4.93
+      },
+      {
+        "fill": "btn-blue",
+        "text": "white",
+        "ratio": 4.5
+      },
+      {
+        "fill": "btn-yellow",
+        "text": "ink",
+        "ratio": 9.94
+      },
+      {
+        "fill": "btn-green",
+        "text": "ink",
+        "ratio": 6.36,
+        "note": "white on green is 2.65:1, forbidden"
+      },
+      {
+        "fill": "canvas",
+        "text": "muted",
+        "ratio": 5.82
+      }
+    ],
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Home hero headline only."
+      },
+      "display-console": {
+        "displayName": "Display Console",
+        "purpose": "Console name in its hero."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Every section heading, via the shared section frame."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Tile, game, legacy and hotspot headings."
+      },
+      "lede": {
+        "displayName": "Lede",
+        "purpose": "Section ledes and tile bodies in ink-2."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running copy."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Chips, nav, spec labels, captions; sentence case."
+      },
+      "data": {
+        "displayName": "Data",
+        "purpose": "Spec figures in Geist Mono; units in sans at 0.45em."
+      },
+      "data-inline": {
+        "displayName": "Data Inline",
+        "purpose": "Years, dates, prices, region figures, citation numbers."
+      }
+    },
+    "shadows": [
+      {
+        "name": "hover-lift",
+        "value": "0 28px 48px -24px rgb(0 0 0 / 0.3)",
+        "purpose": "Console cards on hover."
+      },
+      {
+        "name": "floating-chrome",
+        "value": "0 10px 30px -12px rgb(0 0 0 / 0.25)",
+        "purpose": "Mini-timeline pill."
+      },
+      {
+        "name": "active-panel",
+        "value": "0 8px 24px -12px rgb(0 0 0 / 0.2)",
+        "purpose": "Current media step."
+      },
+      {
+        "name": "hairline-lift",
+        "value": "0 1px 3px rgb(0 0 0 / 0.1)",
+        "purpose": "Secondary pill, pressed language button."
+      },
+      {
+        "name": "red-glow",
+        "value": "0 8px 20px -8px var(--color-btn-red)",
+        "purpose": "Primary pill only."
+      },
+      {
+        "name": "product-drop",
+        "value": "drop-shadow(0 40px 40px rgb(0 0 0 / 0.25))",
+        "purpose": "Console photo in its hero."
+      },
+      {
+        "name": "glass",
+        "value": "backdrop-filter: blur(24px) saturate(1.5); background: rgb(245 245 247 / 0.75)",
+        "purpose": "Header and floating chrome."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out-expo",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Default for entrances, hovers, view transitions (GSAP expo.out)."
+      },
+      {
+        "name": "ease-in-out-quart",
+        "value": "cubic-bezier(0.76, 0, 0.24, 1)",
+        "purpose": "Symmetric moves."
+      },
+      {
+        "name": "state",
+        "value": "300ms",
+        "purpose": "Colour and press states on controls."
+      },
+      {
+        "name": "lift",
+        "value": "500-700ms",
+        "purpose": "Card lift and photo scale (1.04) on hover."
+      },
+      {
+        "name": "view-transition",
+        "value": "0.7s ease-out-expo",
+        "purpose": "Console photo travels from lineup card to hero (--vt-name per console)."
+      },
+      {
+        "name": "scroll-reveal",
+        "value": "GSAP ScrollTrigger + Lenis (lerp 0.12)",
+        "purpose": "Hero stagger/parallax, bars from left, rails filling, count-ups, lit cells with back.out(2)."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "prefers-reduced-motion: reduce",
+        "purpose": "GSAP and Lenis never start; CSS animation/transition 0.01ms; view transition falls back to root cross-fade; pinned media stage becomes static; 3D scene still. Content is in its final state in the DOM by default."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Pill",
+      "kind": "button",
+      "refersTo": "pill-primary",
+      "description": "Lead CTA: face-button red with a red under-glow.",
+      "html": "<a class=\"ds-pill ds-pill-primary\" href=\"#\">Explore the consoles</a>",
+      "css": ".ds-pill{display:inline-flex;align-items:center;gap:.5rem;min-height:3rem;padding:0 1.5rem;border-radius:9999px;font-family: var(--font-sans, \"Geist Variable\", system-ui, sans-serif);font-size:.95rem;font-weight:500;text-decoration:none;transition:background-color .3s cubic-bezier(.16,1,.3,1),transform .3s cubic-bezier(.16,1,.3,1),filter .3s cubic-bezier(.16,1,.3,1);} .ds-pill:active{transform:scale(.97);} .ds-pill:focus-visible{outline:2px solid var(--color-btn-blue,#2f6bff);outline-offset:3px;} .ds-pill-primary{background:var(--color-btn-red,#d9262c);color:#fff;box-shadow:0 8px 20px -8px var(--color-btn-red,#d9262c);} .ds-pill-primary:hover{filter:brightness(1.1);}"
+    },
+    {
+      "name": "Secondary Pill",
+      "kind": "button",
+      "refersTo": "pill-secondary",
+      "description": "Companion CTA: white with a hairline lift.",
+      "html": "<a class=\"ds-pill2\" href=\"#\">See the timeline</a>",
+      "css": ".ds-pill2{display:inline-flex;align-items:center;min-height:3rem;padding:0 1.5rem;border-radius:9999px;font-family: var(--font-sans, \"Geist Variable\", system-ui, sans-serif);font-size:.95rem;font-weight:500;text-decoration:none;background:#fff;color:var(--color-ink,#1d1d1f);box-shadow:0 1px 3px rgb(0 0 0/.1);transition:transform .3s cubic-bezier(.16,1,.3,1);} .ds-pill2:active{transform:scale(.97);} .ds-pill2:focus-visible{outline:2px solid var(--color-btn-blue,#2f6bff);outline-offset:3px;}"
+    },
+    {
+      "name": "Filter Chips",
+      "kind": "chip",
+      "refersTo": "chip-filter",
+      "description": "Maker filter; the pressed chip fills red.",
+      "html": "<div class=\"ds-chips\"><button class=\"ds-chip\" aria-pressed=\"true\">All</button><button class=\"ds-chip\" aria-pressed=\"false\">Atari</button><button class=\"ds-chip\" aria-pressed=\"false\">Nintendo</button></div>",
+      "css": ".ds-chips{display:flex;gap:.375rem;} .ds-chip{min-height:2.5rem;padding:0 1rem;border:0;border-radius:9999px;font-family: var(--font-sans, \"Geist Variable\", system-ui, sans-serif);font-size:.875rem;font-weight:500;background:rgb(0 0 0/.05);color:var(--color-ink-2,#424245);cursor:pointer;transition:background-color .3s,color .3s;} .ds-chip:hover{background:rgb(0 0 0/.09);} .ds-chip[aria-pressed=true]{background:var(--color-btn-red,#d9262c);color:#fff;} .ds-chip:focus-visible{outline:2px solid var(--color-btn-blue,#2f6bff);outline-offset:3px;}"
+    },
+    {
+      "name": "Header",
+      "kind": "nav",
+      "description": "Sticky glass bar: wordmark with four face-button dots, centred pill links, EN/ES toggle.",
+      "html": "<header class=\"ds-head\"><span class=\"ds-wm\"><span class=\"ds-dots\"><i style=\"background:#d9262c\"></i><i style=\"background:#f6bf26\"></i><i style=\"background:#2fb56a\"></i><i style=\"background:#2f6bff\"></i></span>PRESS START</span><nav><a href=\"#\">Consoles</a><a href=\"#\">Timeline</a></nav><span class=\"ds-lang\"><button aria-pressed=\"true\">EN</button><button aria-pressed=\"false\">ES</button></span></header>",
+      "css": ".ds-head{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:4rem;padding:0 2rem;background:rgb(245 245 247/.75);backdrop-filter:blur(24px) saturate(1.5);border-bottom:1px solid rgb(0 0 0/.06);font-family: var(--font-sans, \"Geist Variable\", system-ui, sans-serif);color:#1d1d1f;} .ds-wm{display:inline-flex;align-items:center;gap:.625rem;font-size:.95rem;font-weight:700;letter-spacing:.14em;} .ds-dots{display:grid;grid-template-columns:repeat(2,7px);gap:3px;} .ds-dots i{width:7px;height:7px;border-radius:50%;} .ds-head nav{display:flex;gap:.25rem;} .ds-head nav a{padding:.5rem .75rem;border-radius:9999px;font-size:.875rem;color:#424245;text-decoration:none;transition:background-color .2s;} .ds-head nav a:hover{background:rgb(0 0 0/.05);color:#1d1d1f;} .ds-lang{justify-self:end;display:flex;padding:4px;border-radius:9999px;background:rgb(0 0 0/.05);} .ds-lang button{min-height:2.25rem;min-width:2.75rem;border:0;border-radius:9999px;background:transparent;font:600 .75rem/1 inherit;letter-spacing:.05em;color:#5f5f65;} .ds-lang button[aria-pressed=true]{background:#fff;color:#1d1d1f;box-shadow:0 1px 3px rgb(0 0 0/.12);}"
+    },
+    {
+      "name": "Console Card",
+      "kind": "card",
+      "description": "Lineup tile owned by the console accent at Tint Bold; lifts and tilts on hover.",
+      "html": "<a class=\"ds-ccard\" href=\"#\" style=\"--cw-accent:#c8102e\"><span class=\"ds-ccard-n\">Nintendo Entertainment System</span><span class=\"ds-ccard-m\">Nintendo · 1983</span><span class=\"ds-ccard-ph\"></span><span class=\"ds-ccard-x\">Explore &rsaquo;</span></a>",
+      "css": ".ds-ccard{display:flex;flex-direction:column;width:20rem;aspect-ratio:4/5;padding:1.75rem;border-radius:1.75rem;background:color-mix(in oklab,var(--cw-accent) 42%,white);color:#1d1d1f;text-decoration:none;font-family: var(--font-sans, \"Geist Variable\", system-ui, sans-serif);transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .5s cubic-bezier(.16,1,.3,1);} .ds-ccard:hover{transform:translateY(-.5rem) rotate(-.6deg);box-shadow:0 28px 48px -24px rgb(0 0 0/.3);} .ds-ccard:focus-visible{outline:2px solid #2f6bff;outline-offset:3px;} .ds-ccard-n{font-size:1.875rem;font-weight:650;letter-spacing:-.035em;line-height:1.02;} .ds-ccard-m{margin-top:.375rem;font-size:.875rem;} .ds-ccard-ph{flex:1;} .ds-ccard-x{font-size:.875rem;font-weight:500;}"
+    },
+    {
+      "name": "Verdict Block",
+      "kind": "card",
+      "refersTo": "feature-block-red",
+      "description": "Full face-button block for a page's loud moment; white on red, points in 20% black cards.",
+      "html": "<section class=\"ds-block\"><h2>The verdict</h2><ul><li>More than half of all its consoles were sold in the Americas.<sup>[4]</sup></li></ul></section>",
+      "css": ".ds-block{display:grid;gap:2rem;padding:3.5rem 3rem;border-radius:2.5rem;background:var(--color-btn-red,#d9262c);color:#fff;font-family: var(--font-sans, \"Geist Variable\", system-ui, sans-serif);} .ds-block h2{margin:0;font-size:3rem;font-weight:650;letter-spacing:-.035em;line-height:1.02;} .ds-block ul{margin:0;padding:0;list-style:none;} .ds-block li{padding:1.25rem;border-radius:1rem;background:rgb(0 0 0/.2);font-size:1.125rem;line-height:1.375;} .ds-block sup{font-family:var(--font-mono,monospace);font-size:.6em;}"
+    },
+    {
+      "name": "Spec Tile",
+      "kind": "custom",
+      "description": "Mono figure paired with a drawing of its meaning; here colours as a lit dot matrix.",
+      "html": "<div class=\"ds-spec\"><span class=\"ds-spec-l\">Colours<sup>[7]</sup></span><span class=\"ds-spec-v\">25</span><span class=\"ds-spec-d\">25 on screen, from 54</span><span class=\"ds-spec-m\"><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i></i><i></i><i></i><i></i></span></div>",
+      "css": ".ds-spec{display:flex;flex-direction:column;gap:1.25rem;width:18rem;padding:1.75rem;border-radius:1.75rem;background:color-mix(in oklab,#f6bf26 22%,white);color:#1d1d1f;font-family: var(--font-sans, \"Geist Variable\", system-ui, sans-serif);} .ds-spec-l{font-size:.875rem;font-weight:500;} .ds-spec-l sup{font-family:var(--font-mono,monospace);font-size:.6em;} .ds-spec-v{font-family:var(--font-mono,\"Geist Mono Variable\",monospace);font-size:3rem;font-weight:500;line-height:1;letter-spacing:-.025em;} .ds-spec-d{color:#424245;} .ds-spec-m{display:grid;grid-template-columns:repeat(9,1fr);gap:6px;max-width:15rem;} .ds-spec-m i{aspect-ratio:1;border-radius:50%;background:rgb(0 0 0/.1);} .ds-spec-m i.on{background:#1d1d1f;}"
+    },
+    {
+      "name": "Citation and Disputed",
+      "kind": "custom",
+      "description": "Inline Mono source marker inheriting text colour, and the Disputed pill for figures whose sources disagree.",
+      "html": "<p class=\"ds-cite\">¥14,800<sup>[<a href=\"#\">3</a>]</sup><span class=\"ds-disputed\">Disputed</span></p>",
+      "css": ".ds-cite{font-family: var(--font-sans, \"Geist Variable\", system-ui, sans-serif);font-size:1rem;color:#1d1d1f;} .ds-cite sup{margin-left:2px;font-family:var(--font-mono,monospace);font-size:.6em;font-weight:400;} .ds-cite sup a{color:currentColor;text-decoration:none;} .ds-cite sup a:hover{text-decoration:underline;} .ds-disputed{display:inline-flex;align-items:center;margin-left:.5rem;padding:.125rem .5rem;border-radius:9999px;background:rgb(246 191 38/.25);font-size:.7rem;font-weight:600;color:#1d1d1f;vertical-align:middle;}"
+    },
+    {
+      "name": "Mini-Timeline",
+      "kind": "nav",
+      "description": "Floating glass pill with one accent dot and Mono year per console; the current stop is ink.",
+      "html": "<ol class=\"ds-mt\"><li><a href=\"#\" style=\"--cw-accent:#d9662b\"><i></i>1977</a></li><li><a href=\"#\" aria-current=\"page\" style=\"--cw-accent:#c8102e\"><i></i>1983</a></li><li><a href=\"#\" style=\"--cw-accent:#46607d\"><i></i>1988</a></li></ol>",
+      "css": ".ds-mt{display:flex;gap:4px;margin:0;padding:6px;list-style:none;border-radius:9999px;border:1px solid rgb(0 0 0/.06);background:rgb(255 255 255/.8);backdrop-filter:blur(24px);box-shadow:0 10px 30px -12px rgb(0 0 0/.25);width:max-content;} .ds-mt a{display:flex;align-items:center;height:2.25rem;padding:0 .625rem;border-radius:9999px;font-family:var(--font-mono,monospace);font-size:.75rem;color:#5f5f65;text-decoration:none;transition:background-color .5s cubic-bezier(.16,1,.3,1),padding .5s cubic-bezier(.16,1,.3,1);} .ds-mt a:hover{background:rgb(0 0 0/.05);color:#1d1d1f;} .ds-mt a[aria-current=page]{background:#1d1d1f;color:#fff;padding:0 .875rem;} .ds-mt i{width:8px;height:8px;margin-right:6px;border-radius:50%;background:var(--cw-accent);}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Flagship Showroom",
+    "overview": "Every console, from the 1977 Atari 2600 to the 2017 Switch, is shown the way a maker shows this year's flagship: a cut-out studio photo on a big, light, rounded stage, with generous air and one confident sentence. The ground is a near-white canvas; the colour arrives in whole blocks, never in trims. Nintendo's official site sets the colour temperament (bold rounded fields in the four face-button hues, playful demos); Apple's product pages set the motion (scroll-scrubbed reveals, expo ease-out, soft hover lifts).\n\nEach console also owns a colour. A single custom property, its accent, tints that console's hero, its lineup card, its neighbour cards and its data marks, so a page reads as that machine's page without any per-page stylesheet. The four brand hues sign the site as a whole (wordmark dots, CTA, verdict, legacy, feature blocks); the console accent signs the machine.\n\nDensity is low and deliberate: one heading scale per section, figures shown once and drawn as what they mean, sources cited inline. The user rejected an earlier dark \"store aisle\" direction as too heavy and too blue; the light ground is a confirmed commitment, and the direction refuses dark neon retro, pixel fonts and card-grid catalogs.",
+    "keyCharacteristics": [
+      "Light neutral ground (canvas and white) with ink text; colour lives in large rounded blocks.",
+      "Four face-button hues as the brand signature; a per-console accent as the page's own colour.",
+      "One family, Geist, in two cuts: tight display at weight 650, Mono only for figures, dates and data.",
+      "Big, concentric rounding: blocks, tiles, inner panels, pills.",
+      "Flat at rest; soft lift and scale on hover; expo ease-out everywhere.",
+      "Motion enhances content that is already in the DOM; reduced motion gets the finished state."
+    ],
+    "rules": [
+      {
+        "name": "The Colour Owns The Block Rule",
+        "body": "A brand hue or console tint fills an entire rounded block or tile. Colour is never applied as a side stripe, border accent or gradient text.",
+        "section": "colors"
+      },
+      {
+        "name": "The Fill Sets The Ink Rule",
+        "body": "Text colour is chosen per fill for contrast: white on red and blue; ink on yellow, green, soft fills and every console tint. White on green fails (about 2.7:1) and is never used; white on blue sits at the 4.5:1 floor, so keep text on blue at body size or larger.",
+        "section": "colors"
+      },
+      {
+        "name": "The Colorway Scope Rule",
+        "body": "Console colour comes only from the nearest `--cw-accent` scope, through Tint, Tint Bold, or raw accent for data marks. A new console needs a colorway entry, not new CSS.",
+        "section": "colors"
+      },
+      {
+        "name": "The Heading Stands Alone Rule",
+        "body": "No kicker, eyebrow or small uppercase label above a heading. The heading is the first thing in its block; context goes in the lede below it.",
+        "section": "typography"
+      },
+      {
+        "name": "The Mono Means Data Rule",
+        "body": "Geist Mono appears only where the content is a number, a date, a year or a citation. Never for prose or headings.",
+        "section": "typography"
+      },
+      {
+        "name": "The Wordmark Is The Only Tracked Caps",
+        "body": "Wide-tracked uppercase (0.14em) belongs to the PRESS START wordmark; the EN/ES toggle is the only other caps text, as language codes.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat Until Touched Rule",
+        "body": "Tiles and blocks carry no resting shadow. Lift is earned by hover, focus or being the active step.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Glass Chrome Rule",
+        "body": "Chrome that floats over content (header, mini-timeline) is translucent with backdrop blur and a 6% black hairline.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** keep the ground light: canvas #f5f5f7 and white, with ink #1d1d1f.",
+      "**Do** give colour a whole rounded block: 2.5rem islands, 1.75rem tiles.",
+      "**Do** tint console-owned surfaces from `--cw-accent` (Tint Bold for heroes and console cards, Tint for quiet panels, raw accent for data marks).",
+      "**Do** pair white text with red and blue, ink text with yellow, green, soft fills and tints.",
+      "**Do** draw a spec as what it means (grid, matrix, bar) next to its number.",
+      "**Do** cite every figure inline and flag disagreeing sources with the Disputed pill.",
+      "**Do** ship content in its final state in the DOM and let motion be an enhancement that reduced motion skips."
+    ],
+    "donts": [
+      "**Don't** put a kicker, eyebrow or small uppercase label above a heading.",
+      "**Don't** add hero-metric strips; a figure appears once, in the section that explains it.",
+      "**Don't** set white text on btn-green or on any console tint.",
+      "**Don't** hard-code a console's hex in a component; read the colorway scope.",
+      "**Don't** go dark, neon or pixel-font retro; the rejected \"store aisle\" direction stays rejected.",
+      "**Don't** use box art, screenshots or sprites; illustrations are original abstract shapes.",
+      "**Don't** give tiles a resting shadow."
+    ]
+  }
+}

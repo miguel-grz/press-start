@@ -82,10 +82,6 @@
   background-color: color-mix(in oklab, var(--cw-accent) 11%, white);
 }
 
-@utility bg-tint-strong {
-  background-color: color-mix(in oklab, var(--cw-accent) 26%, white);
-}
-
 /* Heroes and lineup cards: the console's colour owns the block. */
 @utility bg-tint-bold {
   background-color: color-mix(in oklab, var(--cw-accent) 42%, white);

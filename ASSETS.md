@@ -22,6 +22,7 @@ Every shipped raster is logged here so it can be reproduced. 3D models and physi
 3. Cut out onto transparency with `scripts/matte.ts`: a border flood-fill through near-white neutral pixels, plus colour-to-alpha for soft shadows and edges.
 4. Export 800w and 1600w AVIF (q58) and WebP (q80) to `public/assets/<slug>/console-*`.
 5. Record the intrinsic sizes in `src/data/photoMeta.json`.
+6. Embed each file's origin in the raster itself (`impeccable embed-prompt <file> --prompt "Sourced, not generated: …"`), so provenance travels with the image. Re-run this after regenerating.
 
 The source files are the manufacturers' products. Their printed branding appears only as part of the hardware, in editorial use.
 

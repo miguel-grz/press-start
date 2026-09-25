@@ -3,12 +3,13 @@ import type { SceneProps } from './types'
 
 type SceneComponent = LazyExoticComponent<ComponentType<SceneProps>>
 
-const placeholder: SceneComponent = lazy(() => import('./placeholder/Scene'))
+/** Console-specific scenes, each in its own chunk. */
+const scenes: Partial<Record<string, SceneComponent>> = {
+  nes: lazy(() => import('./nes/Scene')),
+}
 
-/** Console-specific scenes, each in its own chunk. Consoles without one use the placeholder. */
-const scenes: Partial<Record<string, SceneComponent>> = {}
-
-/** Renders the scene registered for `slug`. Scenes are module-level lazy components, so identity is stable. */
+/** Renders the scene registered for `slug`, if any. Scenes are module-level lazy components, so identity is stable. */
 export function ConsoleScene({ slug, ...props }: SceneProps & { slug: string }) {
-  return createElement(scenes[slug] ?? placeholder, props)
+  const scene = scenes[slug]
+  return scene ? createElement(scene, props) : null
 }

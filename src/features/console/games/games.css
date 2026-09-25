@@ -1,0 +1,479 @@
+/*
+ * Original micro-animations that nod to each game's core mechanic.
+ * Abstract shapes only: no characters, sprites or screenshots.
+ */
+
+.game-stage {
+  position: relative;
+  height: 11rem;
+  overflow: hidden;
+  border-radius: 1rem;
+  background: rgb(255 255 255 / 0.65);
+}
+
+.game-stage * {
+  position: absolute;
+}
+
+/* Platformer: parallax hills, a gap to clear, a block to bump. */
+@keyframes hills {
+  to {
+    background-position-x: -240px;
+  }
+}
+@keyframes run-jump {
+  0% {
+    translate: 0 0;
+  }
+  30% {
+    translate: 70px 0;
+  }
+  45% {
+    translate: 108px -64px;
+  }
+  60% {
+    translate: 150px 0;
+  }
+  100% {
+    translate: 230px 0;
+  }
+}
+@keyframes bump {
+  0%,
+  42%,
+  52%,
+  100% {
+    translate: 0 0;
+  }
+  46% {
+    translate: 0 -8px;
+  }
+}
+@keyframes coin-pop {
+  0%,
+  44% {
+    opacity: 0;
+    translate: 0 0;
+  }
+  50% {
+    opacity: 1;
+    translate: 0 -26px;
+  }
+  62%,
+  100% {
+    opacity: 0;
+    translate: 0 -40px;
+  }
+}
+.plat-hills {
+  inset: auto 0 1.5rem 0;
+  height: 4rem;
+  background: radial-gradient(60px 40px at 60px 100%, rgb(47 181 106 / 0.35) 98%, transparent) 0 0 / 240px 100% repeat-x;
+  animation: hills 6s linear infinite;
+}
+.plat-hero {
+  bottom: 2.5rem;
+  left: 8%;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 0.4rem;
+  background: var(--color-btn-red);
+  animation: run-jump 3.2s var(--ease-in-out-quart) infinite;
+}
+.plat-block {
+  bottom: 7.5rem;
+  left: calc(8% + 104px);
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 0.35rem;
+  background: var(--color-btn-yellow);
+  box-shadow: inset 0 -3px 0 rgb(0 0 0 / 0.15);
+  animation: bump 3.2s linear infinite;
+}
+.plat-coin {
+  bottom: 9.25rem;
+  left: calc(8% + 111px);
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 999px;
+  background: var(--color-btn-yellow);
+  animation: coin-pop 3.2s ease-out infinite;
+}
+.plat-ground {
+  bottom: 0;
+  height: 2.5rem;
+  background: #8a5a32;
+  border-top: 0.5rem solid var(--color-btn-green);
+}
+
+/* Adventure: rooms of an overworld revealed one at a time as the explorer passes through. */
+@keyframes explore {
+  0%,
+  8% {
+    translate: 0 0;
+  }
+  25% {
+    translate: 100% 0;
+  }
+  42% {
+    translate: 100% 100%;
+  }
+  60% {
+    translate: 200% 100%;
+  }
+  78%,
+  92% {
+    translate: 200% 0;
+  }
+  100% {
+    translate: 0 0;
+  }
+}
+.adv-grid {
+  inset: 0.75rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 0.35rem;
+}
+.adv-grid > span {
+  position: relative;
+  border-radius: 0.5rem;
+  background: var(--color-btn-green);
+}
+.adv-grid > span::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: #1d2a22;
+  opacity: 0.85;
+  animation: reveal 4.6s linear infinite;
+  animation-delay: var(--delay, 0s);
+}
+@keyframes reveal {
+  0% {
+    opacity: 0.85;
+  }
+  6%,
+  94% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.85;
+  }
+}
+.adv-grid > .adv-fogged::after {
+  animation: none;
+}
+.adv-hero {
+  top: 0.75rem;
+  left: 0.75rem;
+  width: calc((100% - 1.5rem - 1.05rem) / 4);
+  height: calc((100% - 1.5rem - 0.35rem) / 2);
+  display: grid;
+  place-items: center;
+  animation: explore 4.6s var(--ease-in-out-quart) infinite;
+}
+.adv-hero::after {
+  content: '';
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 999px;
+  background: var(--color-btn-yellow);
+  box-shadow: 0 0 0 3px white;
+}
+
+/* Exploration: roll through a narrow tunnel, grab the upgrade, the door opens. */
+@keyframes roll {
+  0% {
+    translate: 0 0;
+    rotate: 0deg;
+  }
+  45% {
+    translate: 150px 0;
+    rotate: 540deg;
+  }
+  55%,
+  75% {
+    translate: 150px 0;
+    rotate: 540deg;
+  }
+  100% {
+    translate: 230px 0;
+    rotate: 900deg;
+  }
+}
+@keyframes orb {
+  0%,
+  44% {
+    opacity: 1;
+    scale: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+    scale: 2.2;
+  }
+}
+@keyframes door {
+  0%,
+  52% {
+    background: var(--color-btn-red);
+    scale: 1 1;
+  }
+  60%,
+  90% {
+    background: var(--color-btn-blue);
+    scale: 1 0.05;
+  }
+  100% {
+    background: var(--color-btn-red);
+    scale: 1 1;
+  }
+}
+.exp-rock {
+  inset: 0;
+  background: #2b2440;
+}
+.exp-tunnel {
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 2.2rem;
+  translate: 0 -50%;
+  background: #f5f5f7;
+}
+.exp-ball {
+  top: calc(50% - 0.7rem);
+  left: 8%;
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 999px;
+  background: conic-gradient(
+    var(--color-btn-yellow) 0 25%,
+    var(--color-btn-red) 0 50%,
+    var(--color-btn-yellow) 0 75%,
+    var(--color-btn-red) 0
+  );
+  animation: roll 3.8s var(--ease-in-out-quart) infinite;
+}
+.exp-orb {
+  top: calc(50% - 0.45rem);
+  left: calc(8% + 156px);
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 999px;
+  background: var(--color-btn-green);
+  box-shadow: 0 0 12px var(--color-btn-green);
+  animation: orb 3.8s ease-out infinite;
+}
+.exp-door {
+  top: calc(50% - 1.1rem);
+  left: calc(8% + 200px);
+  width: 0.6rem;
+  height: 2.2rem;
+  border-radius: 0.3rem;
+  transform-origin: top;
+  animation: door 3.8s var(--ease-in-out-quart) infinite;
+}
+
+/* RPG: the cursor picks a command, the foe flinches, a damage number rises. */
+@keyframes cursor {
+  0%,
+  20% {
+    translate: 0 1.5rem;
+  }
+  30%,
+  100% {
+    translate: 0 0;
+  }
+}
+@keyframes flinch {
+  0%,
+  40%,
+  56%,
+  100% {
+    translate: 0 0;
+    filter: none;
+  }
+  44%,
+  52% {
+    translate: -6px 0;
+    filter: brightness(1.8);
+  }
+  48% {
+    translate: 6px 0;
+  }
+}
+@keyframes damage {
+  0%,
+  42% {
+    opacity: 0;
+    translate: 0 0;
+  }
+  50%,
+  70% {
+    opacity: 1;
+    translate: 0 -18px;
+  }
+  80%,
+  100% {
+    opacity: 0;
+    translate: 0 -24px;
+  }
+}
+@keyframes hp {
+  0%,
+  44% {
+    scale: 1 1;
+  }
+  52%,
+  100% {
+    scale: 0.55 1;
+  }
+}
+.rpg-foe {
+  left: 12%;
+  top: 1.5rem;
+  width: 4rem;
+  height: 3.5rem;
+  border-radius: 50% 50% 40% 40%;
+  background: var(--color-btn-blue);
+  animation: flinch 3.6s linear infinite;
+}
+.rpg-hp {
+  left: 12%;
+  top: 5.6rem;
+  width: 4rem;
+  height: 0.4rem;
+  border-radius: 999px;
+  background: var(--color-btn-green);
+  transform-origin: left;
+  animation: hp 3.6s var(--ease-out-expo) infinite;
+}
+.rpg-damage {
+  left: calc(12% + 1rem);
+  top: 1rem;
+  font: 700 1rem var(--font-mono);
+  color: var(--color-btn-red);
+  animation: damage 3.6s ease-out infinite;
+}
+.rpg-party {
+  right: 10%;
+  top: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.rpg-party > span {
+  position: static;
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 0.35rem;
+}
+.rpg-menu {
+  left: 0.75rem;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  height: 3.3rem;
+  border-radius: 0.6rem;
+  background: #1d2a6b;
+}
+.rpg-menu > span {
+  left: 1.6rem;
+  height: 0.35rem;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.8);
+}
+.rpg-cursor {
+  left: 1.1rem;
+  top: 0.75rem;
+  width: 0;
+  height: 0;
+  border-block: 0.3rem solid transparent;
+  border-left: 0.45rem solid white;
+  animation: cursor 3.6s var(--ease-out-expo) infinite;
+}
+
+/* Flight: fill the run meter, then take off. */
+@keyframes meter {
+  0% {
+    scale: 0 1;
+  }
+  45%,
+  100% {
+    scale: 1 1;
+  }
+}
+@keyframes takeoff {
+  0%,
+  45% {
+    translate: 0 0;
+  }
+  70% {
+    translate: 90px -70px;
+  }
+  85% {
+    translate: 150px -80px;
+  }
+  100% {
+    translate: 210px -60px;
+  }
+}
+@keyframes flutter {
+  50% {
+    rotate: -35deg;
+  }
+}
+.fly-hero {
+  bottom: 2.5rem;
+  left: 10%;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 0.4rem;
+  background: var(--color-btn-red);
+  animation: takeoff 3.4s var(--ease-in-out-quart) infinite;
+}
+.fly-hero::after {
+  content: '';
+  position: absolute;
+  left: -0.7rem;
+  top: 0.35rem;
+  width: 0.8rem;
+  height: 0.45rem;
+  border-radius: 999px;
+  background: #8a5a32;
+  transform-origin: right;
+  animation: flutter 0.3s ease-in-out infinite;
+}
+.fly-meter {
+  left: 0.75rem;
+  top: 0.75rem;
+  width: 7rem;
+  height: 0.6rem;
+  border-radius: 999px;
+  background: rgb(0 0 0 / 0.08);
+  overflow: hidden;
+}
+.fly-meter::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(90deg, var(--color-btn-blue) 0 14%, transparent 14% 17%);
+  transform-origin: left;
+  animation: meter 3.4s linear infinite;
+}
+.fly-ground {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2.5rem;
+  background: var(--color-btn-green);
+}
+.fly-cloud {
+  width: 3rem;
+  height: 1rem;
+  border-radius: 999px;
+  background: white;
+}

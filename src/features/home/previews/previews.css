@@ -59,17 +59,6 @@
   }
 }
 
-@keyframes ping {
-  0% {
-    scale: 0.6;
-    opacity: 0.7;
-  }
-  100% {
-    scale: 2.2;
-    opacity: 0;
-  }
-}
-
 @keyframes fill {
   from {
     scale: 0 1;
@@ -90,15 +79,6 @@
 
 .demo-coin {
   animation: coin 2.2s ease-out infinite;
-}
-
-.demo-ping::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 999px;
-  border: 2px solid currentColor;
-  animation: ping 1.8s var(--ease-out-expo) infinite;
 }
 
 .demo-bar {

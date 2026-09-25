@@ -28,7 +28,7 @@ function Tile({
   className?: string
 }) {
   return (
-    <li className={`flex flex-col gap-8 rounded-tile bg-surface p-7 sm:p-9 ${className}`}>
+    <li className={`flex flex-col gap-8 rounded-tile p-7 sm:p-9 ${className}`}>
       <div>
         <h3 className="font-display text-2xl">{title}</h3>
         <p className="mt-2 max-w-[42ch] text-ink-2">{body}</p>
@@ -52,19 +52,19 @@ export function InsidePreview() {
         <p className="mt-4 max-w-[48ch] text-lg text-ink-2">{tiles.lede}</p>
 
         <ul className="mt-12 grid gap-5 md:grid-cols-6">
-          <Tile title={tiles.review.title} body={tiles.review.body} className="md:col-span-3">
+          <Tile title={tiles.review.title} body={tiles.review.body} className="bg-soft-red md:col-span-3">
             <ReviewDemo console={nes} />
           </Tile>
-          <Tile title={tiles.media.title} body={tiles.media.body} className="md:col-span-3">
+          <Tile title={tiles.media.title} body={tiles.media.body} className="bg-soft-blue md:col-span-3">
             <MediaDemo />
           </Tile>
-          <Tile title={tiles.games.title} body={tiles.games.body} className="md:col-span-2">
+          <Tile title={tiles.games.title} body={tiles.games.body} className="bg-soft-yellow md:col-span-2">
             <GamesDemo />
           </Tile>
-          <Tile title={tiles.specs.title} body={tiles.specs.body} className="md:col-span-2">
+          <Tile title={tiles.specs.title} body={tiles.specs.body} className="bg-soft-green md:col-span-2">
             <SpecsDemo />
           </Tile>
-          <Tile title={tiles.hardware.title} body={tiles.hardware.body} className="md:col-span-2">
+          <Tile title={tiles.hardware.title} body={tiles.hardware.body} className="bg-surface md:col-span-2">
             <HardwareDemo console={n64} spots={N64_SPOTS} />
           </Tile>
         </ul>

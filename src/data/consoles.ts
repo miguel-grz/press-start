@@ -24,7 +24,7 @@ export const consoles = [
     releaseYear: 1983,
     colorway: { body: '#bdbdb8', trim: '#3a3a3c', accent: '#c8102e' },
     photo: { commonsFile: 'NES-Console-Set.jpg', author: 'Evan-Amos' },
-    factStatus: 'draft',
+    factStatus: 'sourced',
   },
   {
     slug: 'sega-genesis',

@@ -38,7 +38,7 @@ export function Hero() {
         </div>
       </div>
 
-      <div ref={stage} className="relative mx-auto mt-12 max-w-[100rem] px-4 sm:mt-14">
+      <div ref={stage} className="relative isolate mx-auto mt-12 max-w-[100rem] px-4 sm:mt-14">
         <ul className="relative grid grid-cols-4 items-end gap-x-2 gap-y-6 md:flex md:justify-center md:gap-0">
           {consoles.map((c, i) => (
             <li
@@ -55,6 +55,13 @@ export function Hero() {
           aria-hidden="true"
           className="mx-auto -mt-2 h-10 w-[80%] rounded-[50%] bg-[radial-gradient(closest-side,rgb(0_0_0/0.12),transparent)]"
         />
+        {/* Four brand-colour lights washing the stage from behind. */}
+        <div aria-hidden="true" className="absolute inset-x-0 -top-24 bottom-0 -z-10 opacity-60 blur-3xl">
+          <span className="absolute top-[10%] left-[8%] size-[32%] rounded-full bg-btn-red/25" />
+          <span className="absolute top-[30%] left-[30%] size-[28%] rounded-full bg-btn-yellow/35" />
+          <span className="absolute top-[5%] left-[52%] size-[30%] rounded-full bg-btn-green/25" />
+          <span className="absolute top-[25%] right-[6%] size-[32%] rounded-full bg-btn-blue/25" />
+        </div>
       </div>
     </section>
   )

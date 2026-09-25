@@ -30,7 +30,7 @@ export function Lineup() {
   }
 
   const chip =
-    'min-h-10 rounded-full px-4 text-sm font-medium transition-colors duration-300 aria-pressed:bg-ink aria-pressed:text-white'
+    'min-h-10 rounded-full px-4 text-sm font-medium transition-colors duration-300 aria-pressed:bg-btn-red aria-pressed:text-white'
 
   return (
     <section id="consoles" aria-labelledby="lineup-title" className="scroll-mt-20 py-20 sm:py-28">
@@ -86,7 +86,7 @@ export function Lineup() {
             <Link
               to={`/console/${c.slug}`}
               viewTransition
-              className="group bg-tint flex aspect-[4/5] flex-col rounded-tile p-7 text-ink no-underline transition-[transform,box-shadow] duration-500 ease-out-expo hover:-translate-y-1.5 hover:shadow-[0_24px_48px_-24px_rgb(0_0_0/0.25)]"
+              className="group bg-tint-strong flex aspect-[4/5] flex-col rounded-tile p-7 text-ink no-underline transition-[transform,box-shadow] duration-500 ease-out-expo hover:-translate-y-2 hover:rotate-[-0.6deg] hover:shadow-[0_28px_48px_-24px_rgb(0_0_0/0.3)]"
             >
               <span className="text-sm text-ink-2">
                 {MANUFACTURER_NAMES[c.manufacturer]} · {c.releaseYear}

@@ -9,7 +9,7 @@ export function Wordmark({ className = '' }: { className?: string }) {
           <span key={dot} className={`size-[7px] rounded-full ${dot}`} />
         ))}
       </span>
-      <span className="text-[0.95rem] font-bold tracking-[0.14em]">PRESS START</span>
+      <span className="text-[0.95rem] font-bold tracking-[0.14em] whitespace-nowrap">PRESS START</span>
     </span>
   )
 }

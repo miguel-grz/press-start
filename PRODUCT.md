@@ -44,7 +44,7 @@ Each console is told in its own hardware's language: its signature rendering tri
 - Name: PRESS START.
 - Unofficial, educational fan project. The footer disclaimer says trademarks belong to their owners.
 - No official logos as standalone artwork, no box art, no screenshots, no copied characters or sprites, and no copyrighted music. Game titles appear as text only. Physical game media are recreated with text-only labels, and game animations are original homages to each game's mechanic.
-- Look and feel (user's words): modern, beautiful, clean, professional, light colors, "like a real website". The quality bar is Apple product pages, Nintendo and PlayStation official product pages, and Awwwards-level studio sites. This is a standing preference and it replaced the earlier "Game Aisle" store-shelf direction.
+- Look and feel (user's words): modern, beautiful, clean, professional, light colors, "like a real website". The quality bar leans toward Nintendo's official site: more color in bold, rounded blocks with a playful energy, combined with Apple-product-page motion (scroll-scrubbed reveals, smooth transitions) and Awwwards-level polish. The user asked for this on 2026-09-25. This is a standing preference and it replaced the earlier "Game Aisle" store-shelf direction.
 
 ## Evidence on Hand
 

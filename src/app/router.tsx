@@ -8,7 +8,7 @@ export const router = createBrowserRouter(
     {
       element: <RootLayout />,
       children: [
-        { index: true, lazy: () => import('../features/catalog/CatalogPage') },
+        { index: true, lazy: () => import('../features/home/HomePage') },
         { path: 'console/:slug', lazy: () => import('../features/console/ConsolePage') },
         { path: '*', element: <NotFound /> },
       ],

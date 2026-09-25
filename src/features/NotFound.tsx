@@ -1,20 +1,16 @@
-import { Link } from 'react-router'
+import { PillLink } from '../components/PillLink'
 import { useI18n } from '../i18n/I18nProvider'
 
 export function NotFound() {
   const { t } = useI18n()
   return (
-    <main id="main" className="slatwall flex min-h-[70svh] items-center">
-      <div className="mx-auto w-full max-w-[90rem] px-4 sm:px-6">
-        <h1 className="font-sign text-[clamp(4rem,12vw,9rem)] text-white">{t.notFound.heading}</h1>
-        <p className="mt-6 max-w-[50ch] text-lg text-fixture-ink">{t.notFound.body}</p>
-        <Link
-          to="/"
-          viewTransition
-          className="font-label mt-8 inline-flex min-h-11 items-center bg-dayglo-yellow px-4 text-ink no-underline"
-        >
-          {t.chrome.backToAisle}
-        </Link>
+    <main id="main" className="flex min-h-[70svh] items-center justify-center px-5 text-center">
+      <div>
+        <h1 className="font-display text-[clamp(3.5rem,10vw,7rem)]">{t.notFound.heading}</h1>
+        <p className="mx-auto mt-5 max-w-[46ch] text-lg text-ink-2">{t.notFound.body}</p>
+        <div className="mt-8">
+          <PillLink to="/">{t.notFound.back}</PillLink>
+        </div>
       </div>
     </main>
   )

@@ -1,34 +1,55 @@
 export const en = {
   meta: {
-    title: 'PRESS START: a walk down the console aisle',
+    title: 'PRESS START: the stories behind the consoles',
     description:
-      'An interactive, scroll-driven catalog of video game consoles, from the Atari 2600 to the Nintendo Switch.',
+      'An interactive tour of the video game consoles that shaped the medium, from the Atari 2600 to the Nintendo Switch.',
   },
   chrome: {
     skipToContent: 'Skip to content',
-    backToAisle: 'Back to the aisle',
+    home: 'PRESS START home',
+    consoles: 'Consoles',
+    timeline: 'Timeline',
     language: 'Language',
     disclaimer:
       'Unofficial, educational fan project. Not affiliated with or endorsed by any console maker. All trademarks belong to their respective owners.',
+    photoCredit: 'Console photography by Evan-Amos, public domain, via Wikimedia Commons.',
   },
-  catalog: {
-    heading: 'Press Start',
-    aisle: 'Aisle 7 · Video games',
-    lede: 'Eight machines behind the glass, from wood-grain to Joy-Con. Pull a ticket to take one home for a closer look.',
-    makers: 'Maker',
-    generations: 'Generation',
-    all: 'All',
-    search: 'Search consoles',
-    searchPlaceholder: 'Find a console',
-    results: '{count} of {total} consoles',
-    empty: 'Nothing on this shelf matches “{query}”.',
-    emptyFiltered: 'No console on this shelf matches those markers.',
-    clearFilters: 'Clear filters',
-    released: 'Released',
-    generation: 'Gen',
-    pullTicket: 'Pull a ticket for {name}',
-    ticketCta: 'Take this ticket',
-    draft: 'Facts pending sources',
+  home: {
+    hero: {
+      title: 'Every console has a story.',
+      lede: 'Eight machines that shaped video games, from the Atari 2600 to the Nintendo Switch. Pick one and press start.',
+      explore: 'Explore the consoles',
+      timeline: 'See the timeline',
+    },
+    lineup: {
+      title: 'Choose your console.',
+      filter: 'Filter by maker',
+      all: 'All',
+      explore: 'Explore',
+      previous: 'Scroll lineup left',
+      next: 'Scroll lineup right',
+    },
+    inside: {
+      title: 'Inside every console page.',
+      lede: 'Not just a history lesson. Every page is an interactive review of the machine.',
+      review: {
+        title: 'The review',
+        body: 'Launch price, sales and the verdict at a glance, every figure backed by a source.',
+      },
+      reviewRows: { price: 'Launch price', units: 'Units sold', verdict: 'Verdict' },
+      media: { title: 'Physical media, in motion', body: 'Watch the cartridge slide in and the disc spin up.' },
+      games: { title: 'Five iconic games', body: 'Each one reimagined as a tiny, original animation.' },
+      specs: { title: 'Specs you can feel', body: 'Processor, memory and resolution, animated side by side.' },
+      hardware: { title: 'Hardware up close', body: 'Hotspots on the ports, switches and slots that mattered.' },
+    },
+    timeline: {
+      title: 'Five decades, one shelf.',
+      lede: 'The machines in the order they arrived.',
+    },
+    closing: {
+      title: 'Ready when you are.',
+      cta: 'Start in 1977',
+    },
   },
   generation: {
     2: 'Second generation',
@@ -39,9 +60,12 @@ export const en = {
     8: 'Eighth generation',
   },
   console: {
+    photoAlt: 'The {name} console with its controller',
+    draft: 'Facts pending sources',
     sections: {
       origin: 'Origin & development',
       specs: 'Under the hood',
+      media: 'Physical media',
       launch: 'Launch & sales',
       games: 'Iconic games',
       legacy: 'Legacy',
@@ -53,7 +77,8 @@ export const en = {
     next: 'Next console',
   },
   notFound: {
-    heading: 'Empty shelf',
-    body: 'There’s nothing on this peg. The console you’re looking for may not be in the catalog yet.',
+    heading: 'Game over.',
+    body: 'This page doesn’t exist. The console you’re looking for may not be in the collection yet.',
+    back: 'Back to the start',
   },
 } as const

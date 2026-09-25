@@ -26,6 +26,8 @@ export interface ConsoleEntry {
   /** Year of the first release in any region. */
   releaseYear: number
   colorway: Colorway
+  /** Public-domain product photo on Wikimedia Commons, processed by `scripts/fetch-photos.ts`. */
+  photo: { commonsFile: string; author: string }
   /** `draft` until every figure on the entry is backed by a source in SOURCES.md. */
   factStatus: 'draft' | 'sourced'
 }

@@ -12,7 +12,7 @@ Vite + React + TypeScript, Tailwind CSS, React Router (BrowserRouter with build-
 
 ## Users
 
-Primary: retro and video-game enthusiasts who want to explore consoles in depth. They come out of curiosity or nostalgia, stay to read, and will notice if a date, a spec or a sales figure is wrong.
+Primary: retro and video game enthusiasts who want to explore consoles in depth. They come out of curiosity or nostalgia, stay to read, and will notice if a date, a spec or a sales figure is wrong.
 Secondary: recruiters and tech leads looking at the project as a front-end portfolio piece. They visit briefly, mostly on desktop, and judge craft, performance and code quality.
 
 ## Product Purpose
@@ -25,8 +25,8 @@ Each console is told in its own hardware's language: its signature rendering tri
 
 ## Operating Context
 
-- Browsing the catalog: filter by manufacturer or generation, search by name, and switch to a timeline view (1972 → today).
-- Reading a console page: vertical scroll through 8 fixed sections: hero, origin, specs, launch & sales, 5 iconic games, legacy, fun fact, prev/next navigation.
+- Home is a preview of the whole site, not a catalog grid. A hero introduces the project, a lineup lets you pick a console, previews show what every console page offers (review, iconic games, physical formats, specs), and a timeline preview spans 1977 → today.
+- Console pages read like an interactive review. They cover the verdict and key facts, the origin story, the hardware (photo with hotspots and animated specs), physical media (how the cartridges or discs looked and loaded), 5 iconic games with small original animations, launch and sales, legacy, and a fun fact. Each page has its own signature scroll moment.
 - Bilingual: English primary, Spanish full translation, toggle persisted.
 - Desktop and mobile. Mobile gets a lighter version of every effect.
 
@@ -34,8 +34,8 @@ Each console is told in its own hardware's language: its signature rendering tri
 
 - v1 consoles (8): Atari 2600, NES, Sega Genesis, SNES, PlayStation, Nintendo 64, PlayStation 2, Nintendo Switch. Phase 2 later: Game Boy, Dreamcast, Xbox, Wii, PS5.
 - Data-driven: adding a console = one data entry + one scene component + assets.
-- Console 3D models are procedural, stylized low-poly R3F builds with articulated parts, not trademark-exact replicas.
-- 2D assets (card renders, textures, backdrops, parallax layers) are generated with Higgsfield. Credits are limited, so each batch is quoted before it runs and every prompt is logged in ASSETS.md.
+- Console imagery is real public-domain product photography (Evan-Amos collection on Wikimedia Commons), optimized to AVIF/WebP. Physical media (cartridges, discs, cases) and signature effects are built in code (R3F, SVG, shaders).
+- Higgsfield is reserved for ambient or decorative assets where generation clearly beats code. Credits are limited, so each batch is quoted first and logged in ASSETS.md.
 - Performance: Lighthouse Performance ≥ 85 on desktop, 60fps on a mid-range laptop, no WebGL canvas per catalog card, and each console's assets load only on its route.
 - Sound is optional, off by default, and uses only original or royalty-free audio.
 
@@ -43,11 +43,13 @@ Each console is told in its own hardware's language: its signature rendering tri
 
 - Name: PRESS START.
 - Unofficial, educational fan project. The footer disclaimer says trademarks belong to their owners.
-- No official logos, box art, screenshots, or copyrighted music. Game titles appear as text only.
+- No official logos as standalone artwork, no box art, no screenshots, no copied characters or sprites, and no copyrighted music. Game titles appear as text only. Physical game media are recreated with text-only labels, and game animations are original homages to each game's mechanic.
+- Look and feel (user's words): modern, beautiful, clean, professional, light colors, "like a real website". The quality bar is Apple product pages, Nintendo and PlayStation official product pages, and Awwwards-level studio sites. This is a standing preference and it replaced the earlier "Game Aisle" store-shelf direction.
 
 ## Evidence on Hand
 
-- No assets exist yet. Every fact must come from a web source logged in SOURCES.md. Nothing may be invented. Uncertain figures are flagged in the data and in the UI.
+- Public-domain console photos by Evan-Amos (Wikimedia Commons) exist for all 8 v1 consoles, at 4–5K resolution on white backgrounds.
+- Every fact must come from a web source logged in SOURCES.md. Nothing may be invented. Uncertain figures are flagged in the data and in the UI.
 
 ## Product Principles
 

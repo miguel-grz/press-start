@@ -5,20 +5,20 @@ import { getDeviceTier } from '../lib/deviceTier'
 import { useReducedMotion } from '../motion/useReducedMotion'
 
 /**
- * The one WebGL canvas of a console route. Fixed behind the page content, decorative for
- * assistive tech (all information lives in the DOM), and scaled by device tier + live FPS.
+ * The console route's WebGL canvas. Fills its positioned parent, is decorative for assistive
+ * tech (all information lives in the DOM), and scales resolution by device tier and live FPS.
  */
 export function SceneCanvas({ children }: { children: ReactNode }) {
   const reduced = useReducedMotion()
   const [maxDpr, setMaxDpr] = useState(() => (getDeviceTier() === 'low' ? 1.25 : 2))
 
   return (
-    <div className="pointer-events-none fixed inset-0 -z-10" aria-hidden="true">
+    <div className="absolute inset-0" aria-hidden="true">
       <Canvas
         dpr={[1, maxDpr]}
         frameloop={reduced ? 'demand' : 'always'}
         gl={{ antialias: true, powerPreference: 'high-performance' }}
-        camera={{ position: [0, 0.6, 5], fov: 35 }}
+        camera={{ position: [0, 0.8, 5], fov: 32 }}
       >
         <PerformanceMonitor onDecline={() => setMaxDpr(1)} />
         {children}

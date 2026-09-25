@@ -1,31 +1,31 @@
 @import 'tailwindcss';
-@import '@fontsource-variable/archivo/wdth.css';
+@import '@fontsource-variable/geist';
+@import '@fontsource-variable/geist-mono';
 
 /*
- * PRESS START design tokens: the video game aisle.
- * Fixture blue owns the surface; ticket stock carries reading; day-glo stickers mark state only.
- * Console colorways arrive per bay/page as --cw-body / --cw-trim / --cw-accent.
+ * PRESS START design tokens.
+ * Light, photo-led product showcase. Neutral grounds and ink carry the page; the four
+ * face-button hues are the brand signature (used sparingly); each console tints its own
+ * surfaces through --cw-accent.
  */
 @theme {
-  --color-fixture: #1d3fbf;
-  --color-fixture-deep: #13298a;
-  --color-fixture-groove: #10236f;
-  --color-fixture-ink: #dfe6ff;
-  --color-lip: #d3d8e1;
-  --color-lip-shade: #8d96a8;
-  --color-ticket: #f5f6f1;
-  --color-ticket-rule: #c9ccc2;
-  --color-ink: #111216;
-  --color-ink-soft: #464a55;
-  --color-case: #0a0f2c;
-  --color-case-glow: #2a3b8f;
-  --color-dayglo-orange: #ff6a1a;
-  --color-dayglo-yellow: #ffe14d;
+  --color-canvas: #f5f5f7;
+  --color-surface: #ffffff;
+  --color-ink: #1d1d1f;
+  --color-ink-2: #424245;
+  --color-muted: #6e6e73;
+  --color-line: #d2d2d7;
+  --color-link: #0a5bd3;
 
-  --font-sans: 'Archivo Variable', ui-sans-serif, system-ui, sans-serif;
+  --color-btn-red: #ef3e36;
+  --color-btn-yellow: #f6bf26;
+  --color-btn-green: #2fb56a;
+  --color-btn-blue: #2f6bff;
 
-  /* One shelf pitch governs vertical rhythm: rows, rules and gaps are multiples of it. */
-  --spacing-pitch: 0.5rem;
+  --font-sans: 'Geist Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Geist Mono Variable', ui-monospace, monospace;
+
+  --radius-tile: 1.75rem;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
@@ -33,31 +33,29 @@
 
 @layer base {
   html {
-    background: var(--color-fixture);
-    color: var(--color-fixture-ink);
+    background: var(--color-canvas);
+    color: var(--color-ink);
     font-family: var(--font-sans);
-    font-variant-numeric: tabular-nums;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-    scrollbar-color: var(--color-dayglo-yellow) var(--color-fixture-deep);
-    accent-color: var(--color-dayglo-orange);
-    caret-color: var(--color-dayglo-orange);
+    scrollbar-color: #b8b8bf transparent;
+    accent-color: var(--color-btn-blue);
+    caret-color: var(--color-btn-blue);
   }
 
   ::selection {
-    background: var(--color-dayglo-yellow);
+    background: color-mix(in oklab, var(--color-btn-blue) 22%, white);
     color: var(--color-ink);
   }
 
   :focus-visible {
-    outline: 3px solid var(--color-dayglo-yellow);
+    outline: 2px solid var(--color-btn-blue);
     outline-offset: 3px;
-    border-radius: 2px;
   }
 
   a {
     text-underline-offset: 0.2em;
-    text-decoration-thickness: 0.08em;
+    text-decoration-thickness: 0.07em;
   }
 
   h1,
@@ -71,32 +69,21 @@
   }
 }
 
-@utility font-sign {
+/* Display type: tight, confident, never below the tracking floor. */
+@utility font-display {
   font-family: var(--font-sans);
-  font-stretch: 62%;
-  font-weight: 850;
-  text-transform: uppercase;
-  letter-spacing: 0.01em;
-  line-height: 0.88;
+  font-weight: 650;
+  letter-spacing: -0.035em;
+  line-height: 1.02;
 }
 
-@utility font-label {
-  font-family: var(--font-sans);
-  font-stretch: 75%;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+/* Soft console tint for tiles and heroes; the accent comes from the nearest colorway scope. */
+@utility bg-tint {
+  background-color: color-mix(in oklab, var(--cw-accent) 11%, white);
 }
 
-/* Slatwall: horizontal grooves on fixture blue, one groove per four shelf pitches. */
-@utility slatwall {
-  background-color: var(--color-fixture);
-  background-image: repeating-linear-gradient(
-    to bottom,
-    transparent 0 calc(var(--spacing-pitch) * 4 - 3px),
-    var(--color-fixture-groove) calc(var(--spacing-pitch) * 4 - 3px) calc(var(--spacing-pitch) * 4 - 1px),
-    rgb(255 255 255 / 0.12) calc(var(--spacing-pitch) * 4 - 1px) calc(var(--spacing-pitch) * 4)
-  );
+@utility bg-tint-strong {
+  background-color: color-mix(in oklab, var(--cw-accent) 22%, white);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -114,19 +101,12 @@
   }
 }
 
-/* Card → hero shared element; the name is set per console via --vt-name. */
+/* Lineup tile → console hero shared element; the name is set per console via --vt-name. */
 .vt-console {
   view-transition-name: var(--vt-name);
 }
 
 ::view-transition-group(*) {
-  animation-duration: 0.6s;
+  animation-duration: 0.7s;
   animation-timing-function: var(--ease-out-expo);
-}
-
-/* Stand-in hands the hero over to the 3D scene after the shared-element transition lands. */
-@keyframes standin-out {
-  to {
-    opacity: 0;
-  }
 }

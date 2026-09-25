@@ -1,0 +1,114 @@
+/* Looping, original micro-demos for the "inside every console page" tiles. */
+
+@keyframes cart-insert {
+  0%,
+  12% {
+    transform: translateY(-42%);
+  }
+  45%,
+  78% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-42%);
+  }
+}
+
+@keyframes disc-spin {
+  to {
+    rotate: 1turn;
+  }
+}
+
+@keyframes hop {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  15% {
+    translate: 0 0;
+    scale: 1.08 0.9;
+  }
+  45% {
+    translate: 70px -46px;
+    scale: 0.95 1.05;
+    rotate: 90deg;
+  }
+  75% {
+    translate: 140px 0;
+    scale: 1.06 0.92;
+    rotate: 180deg;
+  }
+  90% {
+    translate: 140px 0;
+    scale: 1;
+    rotate: 180deg;
+  }
+}
+
+@keyframes coin {
+  0%,
+  35% {
+    opacity: 1;
+    translate: 0 0;
+  }
+  50%,
+  100% {
+    opacity: 0;
+    translate: 0 -18px;
+  }
+}
+
+@keyframes ping {
+  0% {
+    scale: 0.6;
+    opacity: 0.7;
+  }
+  100% {
+    scale: 2.2;
+    opacity: 0;
+  }
+}
+
+@keyframes fill {
+  from {
+    scale: 0 1;
+  }
+}
+
+.demo-cart {
+  animation: cart-insert 3.6s var(--ease-in-out-quart) infinite;
+}
+
+.demo-disc {
+  animation: disc-spin 2.4s linear infinite;
+}
+
+.demo-hop {
+  animation: hop 2.2s var(--ease-in-out-quart) infinite;
+}
+
+.demo-coin {
+  animation: coin 2.2s ease-out infinite;
+}
+
+.demo-ping::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  border: 2px solid currentColor;
+  animation: ping 1.8s var(--ease-out-expo) infinite;
+}
+
+.demo-bar {
+  transform-origin: left;
+}
+
+@supports (animation-timeline: view()) {
+  .demo-bar {
+    animation: fill linear both;
+    animation-timeline: view();
+    animation-range: entry 20% cover 45%;
+  }
+}

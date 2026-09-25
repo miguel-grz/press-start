@@ -1,14 +1,9 @@
-import { ContactShadows, RoundedBox } from '@react-three/drei'
+import { ContactShadows, Environment, Lightformer, RoundedBox } from '@react-three/drei'
 import { useFrame, useThree } from '@react-three/fiber'
 import { useMemo, useRef } from 'react'
-import { CanvasTexture, SRGBColorSpace, Vector3, type Group, type Mesh, type MeshStandardMaterial } from 'three'
+import { CanvasTexture, SRGBColorSpace, type Group } from 'three'
 import { useReducedMotion } from '../../motion/useReducedMotion'
 import type { SceneProps } from '../types'
-
-const BODY = '#cfcfca'
-const BASE = '#8e8e90'
-const BLACK = '#232325'
-const CART = '#8f9095'
 
 /** 0–1 progress through [start, end] of the overall scroll, eased in and out. */
 function segment(p: number, start: number, end: number): number {
@@ -16,149 +11,133 @@ function segment(p: number, start: number, end: number): number {
   return x < 0.5 ? 4 * x * x * x : 1 - (-2 * x + 2) ** 3 / 2
 }
 
-/** Text-only Game Pak label drawn at runtime: no artwork, just type and the console's accent. */
-function useLabelTexture(accent: string) {
+/** Text-only label drawn at runtime: type and a colour band, no artwork. */
+function useLabel(lines: readonly [string, string], band: string, width = 512, height = 420) {
   return useMemo(() => {
     const canvas = document.createElement('canvas')
-    canvas.width = 512
-    canvas.height = 560
+    canvas.width = width
+    canvas.height = height
     const ctx = canvas.getContext('2d')
     if (ctx) {
-      ctx.fillStyle = '#f3f3f0'
-      ctx.fillRect(0, 0, 512, 560)
-      ctx.fillStyle = accent
-      ctx.fillRect(0, 0, 512, 150)
+      ctx.fillStyle = '#f4f4f1'
+      ctx.fillRect(0, 0, width, height)
+      ctx.fillStyle = band
+      ctx.fillRect(0, 0, width, height * 0.3)
       ctx.fillStyle = '#ffffff'
-      ctx.font = '700 64px system-ui, sans-serif'
-      ctx.fillText('GAME PAK', 36, 100)
+      ctx.font = `700 ${Math.round(height * 0.13)}px system-ui, sans-serif`
+      ctx.fillText(lines[0], width * 0.07, height * 0.21)
       ctx.fillStyle = '#1d1d1f'
-      ctx.font = '600 44px system-ui, sans-serif'
-      ctx.fillText('PRESS START', 36, 250)
-      ctx.fillStyle = '#6e6e73'
-      ctx.font = '500 30px system-ui, sans-serif'
-      ctx.fillText('72-pin · 1985', 36, 310)
+      ctx.font = `600 ${Math.round(height * 0.1)}px system-ui, sans-serif`
+      ctx.fillText(lines[1], width * 0.07, height * 0.55)
+      ctx.fillStyle = '#86868b'
+      for (let i = 0; i < 3; i++)
+        ctx.fillRect(width * 0.07, height * (0.68 + i * 0.08), width * (0.7 - i * 0.18), height * 0.025)
     }
     const texture = new CanvasTexture(canvas)
     texture.colorSpace = SRGBColorSpace
+    texture.anisotropy = 8
     return texture
-  }, [accent])
+  }, [lines, band, width, height])
+}
+
+interface CartridgeProps {
+  size: readonly [number, number, number]
+  body: string
+  pinsPerSide: number
+  label: ReturnType<typeof useLabel>
+}
+
+/** A cartridge standing upright: label on the front, grip ridges below, edge connector along the bottom. */
+function Cartridge({ size: [w, h, d], body, pinsPerSide, label }: CartridgeProps) {
+  const pinPitch = (w * 0.78) / pinsPerSide
+  return (
+    <group>
+      <RoundedBox args={[w, h, d]} radius={0.025} smoothness={4}>
+        <meshPhysicalMaterial color={body} roughness={0.55} clearcoat={0.15} />
+      </RoundedBox>
+      <mesh position={[0, h * 0.12, d / 2 + 0.002]}>
+        <planeGeometry args={[w * 0.8, h * 0.56]} />
+        <meshStandardMaterial map={label} roughness={0.85} />
+      </mesh>
+      {Array.from({ length: 6 }, (_, i) => (
+        <mesh key={i} position={[0, -h * 0.25 - i * h * 0.035, d / 2 + 0.004]}>
+          <boxGeometry args={[w * 0.7, h * 0.012, 0.008]} />
+          <meshPhysicalMaterial color={body} roughness={0.4} clearcoat={0.3} />
+        </mesh>
+      ))}
+      {/* Edge connector: green board with gold fingers on both faces. */}
+      <mesh position={[0, -h / 2 + 0.01, 0]}>
+        <boxGeometry args={[w * 0.82, 0.03, d * 0.28]} />
+        <meshStandardMaterial color="#1f5f3a" roughness={0.6} />
+      </mesh>
+      {[1, -1].map((side) =>
+        Array.from({ length: pinsPerSide }, (_, i) => (
+          <mesh
+            key={`${side}-${i}`}
+            position={[-w * 0.39 + pinPitch * (i + 0.5), -h / 2 + 0.005, (side * d * 0.14) / 1.02]}
+          >
+            <boxGeometry args={[pinPitch * 0.6, 0.025, 0.004]} />
+            <meshStandardMaterial color="#d8b25a" metalness={0.9} roughness={0.25} />
+          </mesh>
+        )),
+      )}
+    </group>
+  )
 }
 
 /**
- * The NES front-loader ritual, scrubbed by scroll: the door flips up, the Game Pak slides in,
- * is pressed down onto the pins, the door closes and the power light comes on.
- * A stylised build, not a replica.
+ * NES physical media as a product showcase, scrubbed by scroll:
+ * the Game Pak's label, then its 72-pin edge connector, then the smaller 60-pin Famicom
+ * cartridge sliding in beside it. Proportions follow the real formats; labels are text only.
  */
 export default function NesScene({ colorway, progress }: SceneProps) {
   const reduced = useReducedMotion()
-  const rig = useRef<Group>(null)
-  const door = useRef<Group>(null)
-  const cart = useRef<Group>(null)
-  const led = useRef<Mesh>(null)
-  const label = useLabelTexture(colorway.accent)
-  const lookAt = useMemo(() => new Vector3(), [])
-  const target = useMemo(() => new Vector3(), [])
-  const scale = useThree((state) => Math.min(1.15, state.viewport.width / 5.2))
+  const nes = useRef<Group>(null)
+  const famicom = useRef<Group>(null)
+  const nesLabel = useLabel(['GAME PAK', 'NES · 72 pins'], colorway.accent)
+  const famicomLabel = useLabel(['CASSETTE', 'Famicom · 60 pins'], '#1f4fd6', 512, 300)
+  const fit = useThree((state) => Math.min(1.25, state.viewport.width / 3.4, state.viewport.height / 3.2))
 
-  useFrame(({ camera }, delta) => {
+  useFrame(({ clock }, delta) => {
     const p = reduced ? 1 : progress.current
-    const k = Math.min(1, delta * 8)
+    const k = Math.min(1, delta * 7)
+    const tilt = segment(p, 0.3, 0.5) - segment(p, 0.62, 0.74)
+    const compare = segment(p, 0.66, 0.9)
+    const idle = reduced ? 0 : Math.sin(clock.elapsedTime * 0.8) * 0.06
 
-    const open = segment(p, 0.05, 0.25) - segment(p, 0.72, 0.84)
-    const slide = segment(p, 0.22, 0.52)
-    const press = segment(p, 0.55, 0.7)
-    const power = segment(p, 0.86, 0.94)
-
-    if (door.current) door.current.rotation.x += (open * 1.45 - door.current.rotation.x) * k
-    if (cart.current) {
-      cart.current.position.z += (3.4 - slide * 3.2 - cart.current.position.z) * k
-      cart.current.position.y += (0.24 - press * 0.16 - cart.current.position.y) * k
+    if (nes.current) {
+      const g = nes.current
+      g.rotation.y += (-0.35 + p * 0.35 + idle - g.rotation.y) * k
+      // Tip the cartridge towards the camera to show the edge connector.
+      g.rotation.x += (tilt * -1.2 - g.rotation.x) * k
+      g.position.x += (-compare * 0.8 - g.position.x) * k
+      g.position.y += (tilt * 0.35 - g.position.y) * k
     }
-    if (led.current) {
-      const material = led.current.material as MeshStandardMaterial
-      material.emissiveIntensity += (power * 3 - material.emissiveIntensity) * k
+    if (famicom.current) {
+      const g = famicom.current
+      g.position.x += (2.8 - compare * 1.85 - g.position.x) * k
+      g.rotation.y += (-0.2 + compare * 0.2 - idle - g.rotation.y) * k
     }
-    if (rig.current) rig.current.rotation.y += (-0.5 + p * 0.35 - rig.current.rotation.y) * k
-
-    camera.position.lerp(target.set(0.5, 2.1 - p * 0.5, 5.2 - p * 0.7), k)
-    camera.lookAt(lookAt.set(0, 0.1, 0.6))
   })
 
   return (
     <>
-      <ambientLight intensity={0.85} />
-      <directionalLight position={[3, 6, 4]} intensity={1.7} />
-      <directionalLight position={[-4, 2, -3]} intensity={0.4} />
+      <Environment resolution={256}>
+        <Lightformer form="rect" intensity={3} position={[0, 4, 2]} scale={[8, 2, 1]} />
+        <Lightformer form="rect" intensity={1.5} position={[-4, 1, 3]} scale={[2, 4, 1]} />
+        <Lightformer form="rect" intensity={1} position={[4, 0, -2]} scale={[2, 4, 1]} />
+      </Environment>
+      <ambientLight intensity={0.4} />
+      <directionalLight position={[2, 4, 5]} intensity={1.1} />
 
-      <group ref={rig} scale={scale}>
-        {/* Upper shell and darker base */}
-        <RoundedBox args={[2.6, 0.5, 2.1]} radius={0.03} position={[0, 0.2, 0]}>
-          <meshStandardMaterial color={BODY} roughness={0.7} />
-        </RoundedBox>
-        <RoundedBox args={[2.6, 0.42, 2.1]} radius={0.03} position={[0, -0.24, 0]}>
-          <meshStandardMaterial color={BASE} roughness={0.75} />
-        </RoundedBox>
-
-        {/* Black column and top ribs on the right */}
-        <mesh position={[0.78, 0, 1.0]}>
-          <boxGeometry args={[0.46, 0.9, 0.14]} />
-          <meshStandardMaterial color={BLACK} roughness={0.6} />
-        </mesh>
-        {Array.from({ length: 9 }, (_, i) => (
-          <mesh key={i} position={[0.78, 0.46, 0.75 - i * 0.18]}>
-            <boxGeometry args={[0.46, 0.02, 0.08]} />
-            <meshStandardMaterial color="#bdbdb8" roughness={0.6} />
-          </mesh>
-        ))}
-
-        {/* Dark slot behind the door */}
-        <mesh position={[-0.42, 0.22, 1.052]}>
-          <planeGeometry args={[1.5, 0.4]} />
-          <meshStandardMaterial color="#141415" roughness={1} />
-        </mesh>
-
-        {/* Door, hinged along its top edge */}
-        <group ref={door} position={[-0.42, 0.44, 1.07]}>
-          <mesh position={[0, -0.22, 0]}>
-            <boxGeometry args={[1.52, 0.44, 0.03]} />
-            <meshStandardMaterial color="#dcdcd7" roughness={0.65} />
-          </mesh>
-          <mesh position={[-0.35, -0.2, 0.017]}>
-            <planeGeometry args={[0.55, 0.05]} />
-            <meshStandardMaterial color={colorway.accent} />
-          </mesh>
+      <group scale={fit}>
+        <group ref={nes}>
+          <Cartridge size={[1.2, 1.33, 0.2]} body="#8f9095" pinsPerSide={36} label={nesLabel} />
         </group>
-
-        {/* Power and reset buttons, power light, controller ports */}
-        {[-1.0, -0.72].map((x) => (
-          <mesh key={x} position={[x, -0.2, 1.06]}>
-            <boxGeometry args={[0.22, 0.1, 0.04]} />
-            <meshStandardMaterial color="#5c5c5f" roughness={0.5} />
-          </mesh>
-        ))}
-        <mesh ref={led} position={[-1.18, -0.2, 1.06]}>
-          <boxGeometry args={[0.05, 0.05, 0.02]} />
-          <meshStandardMaterial color="#5a1010" emissive="#ff2a2a" emissiveIntensity={0} />
-        </mesh>
-        {[0.25, 0.45].map((x) => (
-          <mesh key={x} position={[x, -0.26, 1.055]}>
-            <boxGeometry args={[0.12, 0.2, 0.02]} />
-            <meshStandardMaterial color="#2c2c2e" roughness={0.5} />
-          </mesh>
-        ))}
-
-        {/* The Game Pak, lying flat, label up */}
-        <group ref={cart} position={[-0.42, 0.24, 3.4]}>
-          <RoundedBox args={[1.2, 0.2, 1.33]} radius={0.03}>
-            <meshStandardMaterial color={CART} roughness={0.7} />
-          </RoundedBox>
-          <mesh position={[0, 0.101, 0.05]} rotation={[-Math.PI / 2, 0, 0]}>
-            <planeGeometry args={[0.95, 1.04]} />
-            <meshStandardMaterial map={label} roughness={0.9} />
-          </mesh>
+        <group ref={famicom} position={[2.8, -0.33, 0]}>
+          <Cartridge size={[1.05, 0.68, 0.17]} body="#d7b43c" pinsPerSide={30} label={famicomLabel} />
         </group>
-
-        <ContactShadows position={[0, -0.46, 0.6]} opacity={0.35} blur={2.4} scale={9} far={1.5} />
+        <ContactShadows position={[0, -0.75, 0]} opacity={0.3} blur={2.6} scale={7} far={1.6} />
       </group>
     </>
   )

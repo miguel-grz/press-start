@@ -7,7 +7,7 @@ const en: ProfileCopy = {
     summary:
       'Nintendo walked into a market everyone else had written off, dressed its console up as an entertainment system rather than a video game, and walked out with the template the industry still follows: tightly licensed third-party games and first-party series built to last decades.',
     points: [
-      '61.91 million consoles sold worldwide, more than half of them in the Americas.',
+      'More than half of all its consoles were sold in the Americas, not in Japan.',
       'Mario, Zelda, Metroid and Final Fantasy all started or broke through here.',
       'A twenty-year run in Japan: the last Famicom left the factory in 2003.',
     ],
@@ -56,11 +56,11 @@ const en: ProfileCopy = {
     intro:
       'NES games came on Game Paks: large grey cartridges with a 72-pin connector, inserted like a videotape and pressed down to lock into place.',
     steps: [
-      { title: 'Slide it in', body: 'The Game Pak goes in horizontally through the front door.' },
-      { title: 'Press it down', body: 'Pushing it down seats the 72 pins in the connector.' },
-      { title: 'Power on', body: 'The red light comes on, if the pins make contact.' },
+      { title: 'The Game Pak', body: 'A large grey cartridge, with the label on the front and grip ridges below it.' },
+      { title: '72 pins', body: 'Tip it over and the circuit board’s edge shows 72 gold contacts, 36 on each side.' },
+      { title: 'Next to the Famicom', body: 'Japan’s Famicom cartridges were smaller and used 60 pins.' },
     ],
-    note: 'In Japan, Famicom cartridges were smaller, used a 60-pin connector and went straight in from the top.',
+    note: 'On the NES, the Game Pak slid in through a front door and was pressed down; Famicom cartridges went straight in from the top.',
   },
   games: {
     smb: 'Credited as a key factor in reviving the industry after the 1983 crash, and the game that popularised side-scrolling platformers.',
@@ -107,7 +107,7 @@ const es: ProfileCopy = {
     summary:
       'Nintendo entró en un mercado que todos daban por muerto, vistió su consola de sistema de entretenimiento en lugar de videojuego y salió con la plantilla que la industria aún sigue: juegos de terceros bajo licencia estricta y sagas propias pensadas para durar décadas.',
     points: [
-      '61,91 millones de consolas vendidas en el mundo, más de la mitad en América.',
+      'Más de la mitad de sus consolas se vendieron en América, no en Japón.',
       'Mario, Zelda, Metroid y Final Fantasy nacieron o despegaron aquí.',
       'Veinte años de vida en Japón: la última Famicom salió de fábrica en 2003.',
     ],
@@ -156,11 +156,11 @@ const es: ProfileCopy = {
     intro:
       'Los juegos de NES venían en Game Paks: cartuchos grises y grandes con un conector de 72 pines, que se metían como una cinta de vídeo y se bajaban para fijarlos.',
     steps: [
-      { title: 'Deslízalo', body: 'El Game Pak entra en horizontal por la tapa frontal.' },
-      { title: 'Presiónalo', body: 'Al bajarlo, los 72 pines encajan en el conector.' },
-      { title: 'Enciende', body: 'La luz roja se enciende, si los pines hacen contacto.' },
+      { title: 'El Game Pak', body: 'Un cartucho gris y grande, con la etiqueta delante y estrías de agarre debajo.' },
+      { title: '72 pines', body: 'Dale la vuelta y el borde de la placa muestra 72 contactos dorados, 36 por cara.' },
+      { title: 'Junto a la Famicom', body: 'Los cartuchos japoneses de Famicom eran más pequeños y usaban 60 pines.' },
     ],
-    note: 'En Japón, los cartuchos de Famicom eran más pequeños, usaban un conector de 60 pines y entraban directamente por arriba.',
+    note: 'En la NES, el Game Pak entraba por una tapa frontal y se bajaba; los cartuchos de Famicom entraban directamente por arriba.',
   },
   games: {
     smb: 'Considerado clave para revivir la industria tras el crash de 1983, y el juego que popularizó las plataformas de scroll lateral.',

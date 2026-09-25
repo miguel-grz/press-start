@@ -86,12 +86,12 @@ export function Lineup() {
             <Link
               to={`/console/${c.slug}`}
               viewTransition
-              className="group bg-tint-strong flex aspect-[4/5] flex-col rounded-tile p-7 text-ink no-underline transition-[transform,box-shadow] duration-500 ease-out-expo hover:-translate-y-2 hover:rotate-[-0.6deg] hover:shadow-[0_28px_48px_-24px_rgb(0_0_0/0.3)]"
+              className="group bg-tint-bold flex aspect-[4/5] flex-col rounded-tile p-7 text-ink no-underline transition-[transform,box-shadow] duration-500 ease-out-expo hover:-translate-y-2 hover:rotate-[-0.6deg] hover:shadow-[0_28px_48px_-24px_rgb(0_0_0/0.3)]"
             >
-              <span className="text-sm text-ink-2">
+              <span className="font-display text-3xl">{c.name}</span>
+              <span className="mt-1.5 text-sm text-ink">
                 {MANUFACTURER_NAMES[c.manufacturer]} · {c.releaseYear}
               </span>
-              <span className="font-display mt-1.5 text-3xl">{c.name}</span>
               <span className="flex flex-1 items-center justify-center py-4">
                 <ConsolePhoto
                   console={c}

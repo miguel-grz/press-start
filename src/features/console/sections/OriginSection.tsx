@@ -21,8 +21,7 @@ export function OriginSection({ data }: { data: ConsoleProfileModule }) {
     })
     gsap.utils.toArray<HTMLElement>('[data-milestone]').forEach((item) => {
       gsap.from(item, {
-        x: -16,
-        opacity: 0.25,
+        x: -24,
         duration: 0.8,
         ease: 'expo.out',
         scrollTrigger: { trigger: item, start: 'top 75%', toggleActions: 'play none none reverse' },

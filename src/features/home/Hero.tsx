@@ -38,16 +38,16 @@ export function Hero() {
         </div>
       </div>
 
-      <div ref={stage} className="relative isolate mx-auto mt-12 max-w-[100rem] px-4 sm:mt-14">
+      <div ref={stage} className="relative isolate mx-auto mt-12 max-w-[96rem] px-4 sm:mt-14 sm:px-8">
         <ul className="relative grid grid-cols-4 items-end gap-x-2 gap-y-6 md:flex md:justify-center md:gap-0">
           {consoles.map((c, i) => (
             <li
               key={c.slug}
               data-stage-item
-              className={`md:-mx-[1.4%] md:w-[16.5%] ${i % 2 ? 'md:mb-[5%]' : ''}`}
+              className={`md:-mx-[1%] md:w-[14%] ${i % 2 ? 'md:mb-[5%]' : ''}`}
               style={{ zIndex: i % 2 ? 1 : 2 }}
             >
-              <ConsolePhoto console={c} sizes="(min-width: 768px) 17vw, 25vw" priority className="w-full" />
+              <ConsolePhoto console={c} sizes="(min-width: 768px) 15vw, 25vw" priority className="w-full" />
             </li>
           ))}
         </ul>

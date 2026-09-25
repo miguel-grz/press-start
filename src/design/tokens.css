@@ -13,7 +13,7 @@
   --color-surface: #ffffff;
   --color-ink: #1d1d1f;
   --color-ink-2: #424245;
-  --color-muted: #6e6e73;
+  --color-muted: #5f5f65;
   --color-line: #d2d2d7;
   --color-link: #0a5bd3;
 
@@ -84,6 +84,11 @@
 
 @utility bg-tint-strong {
   background-color: color-mix(in oklab, var(--cw-accent) 26%, white);
+}
+
+/* Heroes and lineup cards: the console's colour owns the block. */
+@utility bg-tint-bold {
+  background-color: color-mix(in oklab, var(--cw-accent) 42%, white);
 }
 
 /* Soft fills of the four brand colours for feature blocks. */

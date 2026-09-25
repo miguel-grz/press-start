@@ -68,7 +68,8 @@ export interface ConsoleProfile {
   citations: Partial<Record<CitedBlock, readonly SourceId[]>>
 }
 
-export type CitedBlock = 'origin' | 'hardware' | 'media' | 'legacy0' | 'legacy1' | 'legacy2' | 'funFact'
+export type CitedBlock =
+  'origin' | 'hardware' | 'media' | 'verdict0' | 'verdict1' | 'verdict2' | 'legacy0' | 'legacy1' | 'legacy2' | 'funFact'
 
 export interface ProfileCopy {
   hook: string

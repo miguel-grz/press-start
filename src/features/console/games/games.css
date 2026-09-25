@@ -138,15 +138,50 @@
 }
 .adv-grid > span {
   position: relative;
+  overflow: hidden;
   border-radius: 0.5rem;
-  background: var(--color-btn-green);
+  background: #7fd18f;
+}
+.adv-grid > span > i {
+  position: absolute;
+  border-radius: 999px;
+}
+.adv-tree {
+  width: 0.7rem;
+  height: 0.7rem;
+  background: #1f7a43;
+}
+.adv-water {
+  inset: 55% -10% -20% 30%;
+  background: #4f8df7;
+}
+.adv-rock {
+  width: 1rem;
+  height: 0.7rem;
+  border-radius: 0.3rem !important;
+  background: #9b8f7a;
+}
+.adv-cave {
+  left: 35%;
+  bottom: 0;
+  width: 30%;
+  height: 45%;
+  border-radius: 999px 999px 0 0 !important;
+  background: #1d1d1f;
+}
+.adv-key {
+  width: 0.5rem;
+  height: 0.9rem;
+  border-radius: 0.2rem !important;
+  background: var(--color-btn-yellow);
+  box-shadow: 0 0 8px var(--color-btn-yellow);
 }
 .adv-grid > span::after {
   content: '';
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: #1d2a22;
+  background: #16261b;
   opacity: 0.85;
   animation: reveal 4.6s linear infinite;
   animation-delay: var(--delay, 0s);
@@ -353,8 +388,8 @@
   animation: hp 3.6s var(--ease-out-expo) infinite;
 }
 .rpg-damage {
-  left: calc(12% + 1rem);
-  top: 1rem;
+  left: calc(12% + 4.75rem);
+  top: 1.4rem;
   font: 700 1rem var(--font-mono);
   color: var(--color-btn-red);
   animation: damage 3.6s ease-out infinite;
@@ -476,4 +511,15 @@
   height: 1rem;
   border-radius: 999px;
   background: white;
+}
+
+/* Cards lift a touch on hover: the loop is the play affordance. */
+.game-card {
+  transition:
+    translate 0.5s var(--ease-out-expo),
+    box-shadow 0.5s var(--ease-out-expo);
+}
+.game-card:hover {
+  translate: 0 -6px;
+  box-shadow: 0 24px 40px -24px rgb(0 0 0 / 0.3);
 }

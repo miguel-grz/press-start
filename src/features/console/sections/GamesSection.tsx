@@ -16,7 +16,7 @@ export function GamesSection({ data }: { data: ConsoleProfileModule }) {
         {data.profile.games.map((game, i) => (
           <li
             key={game.id}
-            className={`flex flex-col gap-6 rounded-tile p-6 sm:p-7 ${TILES[i % TILES.length]} ${i < 2 ? 'lg:col-span-3' : 'lg:col-span-2'}`}
+            className={`game-card flex flex-col gap-6 rounded-tile p-6 sm:p-7 ${TILES[i % TILES.length]} ${i < 2 ? 'lg:col-span-3' : 'lg:col-span-2'}`}
           >
             <GameAnimation mechanic={game.mechanic} />
             <div>

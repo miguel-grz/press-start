@@ -37,10 +37,14 @@ export function LaunchSection({ data }: { data: ConsoleProfileModule }) {
               return (
                 <li key={value.region} className="grid grid-cols-[1fr_auto] gap-x-4 gap-y-1 py-4 first:pt-0 last:pb-0">
                   <p className="font-semibold">{t.console.regions[value.region]}</p>
-                  <p className="text-right font-mono">
-                    {price ? formatPrice(price.value.amount, price.value.currency, lang) : '—'}
-                    {price && <Cite ids={price.sources} />}
-                  </p>
+                  {price ? (
+                    <p className="text-right font-mono">
+                      {formatPrice(price.value.amount, price.value.currency, lang)}
+                      <Cite ids={price.sources} />
+                    </p>
+                  ) : (
+                    <p className="text-right text-sm text-muted italic">{t.console.facts.noPrice}</p>
+                  )}
                   <p className="text-sm text-ink-2">
                     {value.name} · {formatDate(value.date, lang)}
                     <Cite ids={sources} />

@@ -38,7 +38,7 @@ export const es: Dictionary = {
         title: 'La review',
         body: 'Precio de lanzamiento, ventas y veredicto de un vistazo, cada cifra con su fuente.',
       },
-      reviewRows: { price: 'Precio de lanzamiento', units: 'Unidades vendidas', verdict: 'Veredicto' },
+      reviewRows: { released: 'Lanzamiento', price: 'Precio de salida (Japón)', units: 'Unidades vendidas' },
       media: { title: 'Formatos físicos, en movimiento', body: 'Mira cómo entra el cartucho y cómo gira el disco.' },
       games: { title: 'Cinco juegos icónicos', body: 'Cada uno reinterpretado en una pequeña animación original.' },
       specs: { title: 'Specs que se sienten', body: 'Procesador, memoria y resolución, animados lado a lado.' },
@@ -76,7 +76,6 @@ export const es: Dictionary = {
       launch: 'Lanzamiento y ventas',
       games: 'Juegos icónicos',
       legacy: 'Legado',
-      funFact: 'Dato curioso',
       sources: 'Fuentes',
     },
     facts: {
@@ -86,6 +85,7 @@ export const es: Dictionary = {
       generation: 'Generación',
       millions: '{value} millones',
       disputed: 'En disputa',
+      noPrice: 'Sin precio de salida documentado',
       gamesSold: 'Juegos vendidos',
     },
     regions: {

@@ -30,23 +30,19 @@ export function useSourceList(): SourceId[] {
   return useContext(CitationContext)
 }
 
-/** Superscript source markers linking to the page's source list. */
+/** Superscript source markers linking to the page's source list; they take the surrounding text colour. */
 export function Cite({ ids }: { ids: readonly SourceId[] | undefined }) {
   const order = useContext(CitationContext)
   if (!ids?.length) return null
   return (
-    <sup className="ml-0.5 font-mono text-[0.6em] font-normal tracking-normal text-muted">
+    <sup className="ml-0.5 font-mono text-[0.6em] font-normal tracking-normal">
       [
       {ids.map((id, i) => {
         const n = order.indexOf(id) + 1
         return (
           <span key={id}>
             {i > 0 && ','}
-            <a
-              href={`#source-${n}`}
-              title={sources[id].title}
-              className="text-muted no-underline hover:text-link hover:underline"
-            >
+            <a href={`#source-${n}`} title={sources[id].title} className="text-current no-underline hover:underline">
               {n}
             </a>
           </span>

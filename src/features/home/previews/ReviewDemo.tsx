@@ -1,33 +1,35 @@
 import { ConsolePhoto } from '../../../components/ConsolePhoto'
+import { profile } from '../../../data/profiles/nes/profile'
 import type { ConsoleEntry } from '../../../data/types'
-import { useI18n } from '../../../i18n/I18nProvider'
-import { colorwayStyle } from '../../../lib/colorway'
+import { format, useI18n } from '../../../i18n/I18nProvider'
+import { formatNumber, formatPrice } from '../../../lib/format'
 
-/** Structure of a console's review header: identity, then the sourced key facts. */
+/** A console page's review header in miniature, with the NES's real, sourced figures. */
 export function ReviewDemo({ console: c }: { console: ConsoleEntry }) {
-  const { t } = useI18n()
+  const { t, lang } = useI18n()
+  const price = profile.launchPrices[0]?.value
+  const rows = [
+    { label: t.home.inside.reviewRows.released, value: String(c.releaseYear) },
+    { label: t.home.inside.reviewRows.price, value: price ? formatPrice(price.amount, price.currency, lang) : '' },
+    {
+      label: t.home.inside.reviewRows.units,
+      value: format(t.console.facts.millions, { value: formatNumber(profile.unitsSold.value.total, lang, 2) }),
+    },
+  ]
   return (
-    <div aria-hidden="true" className="bg-tint rounded-2xl p-5" style={colorwayStyle(c.colorway)}>
+    <div>
       <div className="flex items-center gap-4">
         <ConsolePhoto console={c} sizes="8rem" className="w-28" />
-        <div>
-          <p className="font-display text-lg">{c.name}</p>
-          <p className="text-sm text-ink-2">
-            {c.releaseYear} · {t.generation[c.generation]}
-          </p>
-        </div>
+        <p className="font-display text-lg leading-tight">{c.name}</p>
       </div>
-      <ul className="mt-5 divide-y divide-black/[0.07] border-t border-black/[0.07]">
-        {Object.values(t.home.inside.reviewRows).map((row, i) => (
-          <li key={row} className="flex items-center justify-between py-2.5 text-sm">
-            <span className="text-ink-2">{row}</span>
-            <span className="flex items-center gap-2">
-              <span className="h-2 w-16 rounded-full bg-black/[0.08]" />
-              <sup className="font-mono text-[0.65rem] text-muted">[{i + 1}]</sup>
-            </span>
-          </li>
+      <dl className="mt-5 divide-y divide-black/[0.08] border-t border-black/[0.08]">
+        {rows.map((row) => (
+          <div key={row.label} className="flex items-center justify-between py-2.5 text-sm">
+            <dt className="text-ink-2">{row.label}</dt>
+            <dd className="font-mono font-medium">{row.value}</dd>
+          </div>
         ))}
-      </ul>
+      </dl>
     </div>
   )
 }

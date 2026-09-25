@@ -31,16 +31,16 @@ export function Component() {
       <InsidePreview />
       <TimelinePreview />
       <section aria-labelledby="closing-title" className="px-4 pt-6 pb-24 sm:px-8">
-        <div className="relative mx-auto max-w-[80rem] overflow-hidden rounded-[2.5rem] bg-btn-blue px-6 py-20 text-center text-white sm:py-28">
-          <div aria-hidden="true" className="absolute -top-10 -left-10 grid grid-cols-2 gap-4 opacity-25">
+        <div className="mx-auto max-w-[80rem] rounded-[2.5rem] bg-btn-blue px-6 py-20 text-center text-white sm:py-28">
+          <div aria-hidden="true" className="mx-auto mb-8 grid w-fit grid-cols-2 gap-2.5">
             {['bg-btn-red', 'bg-btn-yellow', 'bg-btn-green', 'bg-white'].map((c) => (
-              <span key={c} className={`size-24 rounded-full ${c}`} />
+              <span key={c} className={`size-5 rounded-full ${c}`} />
             ))}
           </div>
-          <h2 id="closing-title" className="font-display relative text-[clamp(2.5rem,6vw,4.5rem)]">
+          <h2 id="closing-title" className="font-display text-[clamp(2.5rem,6vw,4.5rem)]">
             {t.home.closing.title}
           </h2>
-          <div className="relative mt-8">
+          <div className="mt-8">
             <PillLink to={`/console/${first.slug}`} variant="inverse">
               {t.home.closing.cta}
             </PillLink>

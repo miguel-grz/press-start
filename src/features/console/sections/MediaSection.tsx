@@ -9,7 +9,7 @@ import { Cite } from '../citations'
 const SceneStage = lazy(() => import('../../../three/SceneStage'))
 
 /** Scroll thresholds at which each ritual step becomes the active caption. */
-const STEP_AT = [0, 0.5, 0.82] as const
+const STEP_AT = [0, 0.32, 0.72] as const
 
 /** Sticky 3D stage: the console's physical-media ritual, one step per stretch of scroll. */
 export function MediaSection({ entry, data }: { entry: ConsoleEntry; data: ConsoleProfileModule }) {

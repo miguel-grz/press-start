@@ -28,13 +28,11 @@ export function loader({ params }: LoaderFunctionArgs): Promise<ConsoleProfileMo
 }
 
 function Review({ entry, data }: { entry: ConsoleEntry; data: ConsoleProfileModule }) {
-  const { lang } = useI18n()
-  const copy = data.copy[lang]
   return (
     <CitationProvider profile={data.profile}>
       <main id="main">
         <HeroSection entry={entry} data={data} />
-        <VerdictSection copy={copy} />
+        <VerdictSection data={data} />
         <OriginSection data={data} />
         <HardwareSection entry={entry} data={data} />
         <MediaSection entry={entry} data={data} />
@@ -54,15 +52,14 @@ function Researching({ entry }: { entry: ConsoleEntry }) {
   const { t } = useI18n()
   return (
     <main id="main">
-      <section className="bg-tint">
+      <section className="bg-tint-bold">
         <div className="mx-auto grid min-h-[calc(100svh-4rem)] max-w-[80rem] items-center gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[5fr_7fr]">
           <div>
-            <p className="text-ink-2">
-              {MANUFACTURER_NAMES[entry.manufacturer]} · {t.generation[entry.generation]}
+            <h1 className="font-display text-[clamp(3rem,7vw,5.5rem)]">{entry.name}</h1>
+            <p className="mt-4 text-ink">
+              {MANUFACTURER_NAMES[entry.manufacturer]} · {entry.releaseYear} · {t.generation[entry.generation]}
             </p>
-            <h1 className="font-display mt-3 text-[clamp(3rem,7vw,5.5rem)]">{entry.name}</h1>
-            <p className="mt-5 font-mono text-2xl text-ink-2">{entry.releaseYear}</p>
-            <p className="mt-8 inline-flex items-center gap-2 rounded-full bg-surface/70 px-4 py-2 text-sm text-ink-2">
+            <p className="mt-8 inline-flex items-center gap-2 rounded-full bg-surface/80 px-4 py-2 text-sm text-ink">
               <span aria-hidden="true" className="size-2 rounded-full bg-btn-yellow" />
               {t.console.researching}
             </p>

@@ -36,7 +36,7 @@ export const en = {
         title: 'The review',
         body: 'Launch price, sales and the verdict at a glance, every figure backed by a source.',
       },
-      reviewRows: { price: 'Launch price', units: 'Units sold', verdict: 'Verdict' },
+      reviewRows: { released: 'Released', price: 'Launch price (Japan)', units: 'Units sold' },
       media: { title: 'Physical media, in motion', body: 'Watch the cartridge slide in and the disc spin up.' },
       games: { title: 'Five iconic games', body: 'Each one reimagined as a tiny, original animation.' },
       specs: { title: 'Specs you can feel', body: 'Processor, memory and resolution, animated side by side.' },
@@ -71,7 +71,6 @@ export const en = {
       launch: 'Launch & sales',
       games: 'Iconic games',
       legacy: 'Legacy',
-      funFact: 'Fun fact',
       sources: 'Sources',
     },
     facts: {
@@ -81,6 +80,7 @@ export const en = {
       generation: 'Generation',
       millions: '{value} million',
       disputed: 'Disputed',
+      noPrice: 'No documented launch price',
       gamesSold: 'Games sold',
     },
     regions: {
